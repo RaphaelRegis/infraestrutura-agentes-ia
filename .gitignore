@@ -3,3 +3,9 @@
 01-Lambda/exemplo_imagem.json
 01-Lambda/exemplo_audio.json
 01-Lambda/run_my_lambda.py
+01-Lambda/venv/
+01-Lambda/__pycache__/
+01-Lambda/.idea/
+
+# Geral
+*.env
