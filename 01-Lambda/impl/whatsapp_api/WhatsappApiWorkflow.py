@@ -24,18 +24,16 @@ class WhatsappApiWorkflow(ProcessWorkflow.ProcessWorkflow):
         ai_conversation = upsert_conversation_usecase(message_data["contactName"], message_data["contactNumber"], agent_data["agent_uuid"], supabase_data["url"], supabase_data["api_key"])
 
         # verifica se a mensagem eh do atendente
-        # se for do atendente: pausa a ia, salva no historico e finaliza
-        # se nao for do atendente: prossegue com o fluxo
         message_from_atendent = is_from_attendent(message_data)
 
+        # se for do atendente: pausa a ia, salva no historico e finaliza
+        # se nao for do atendente: prossegue com o fluxo
         if message_from_atendent:
             process_atendent_message(message_data)
             return {}
 
-        # verifica se a conversa esta pausada
-        # se estiver pausada: salva no historico e finaliza
-        # se nao estiver pausada: prossegue com o fluxo
-        paused_conversation = is_conversation_paused(ai_conversation)
+
+        paused_conversation = is_conversation_paused(agent_data["pause_minutes"], ai_conversation["paused_at"])
 
         if paused_conversation:
             process_paused_message(message_data, ai_conversation)
