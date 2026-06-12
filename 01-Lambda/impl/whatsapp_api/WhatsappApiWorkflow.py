@@ -23,7 +23,7 @@ class WhatsappApiWorkflow(ProcessWorkflow.ProcessWorkflow):
         message_data = get_message_data(event)
 
         # pega as variaveis de ambiente de acordo com o id do agente
-        agent_data = get_agent_data(f"whatsapp_api_{"id_do_agente"}")
+        agent_data = get_agent_data(f"WHATSAPP_API_{message_data["agent_id"]}")
 
         # busca a conversa no database
         # cria se nao encontrar
