@@ -3,7 +3,6 @@ import json
 from dotenv import load_dotenv
 
 def get_supabase_data(agent_type: str):
-    print("Pegando dados do agente...")
 
     load_dotenv()
 
