@@ -1,3 +1,4 @@
+from impl.common.use_cases.GetSupabaseDataUseCase import get_supabase_data
 from strategy import ProcessWorkflow
 from impl.whatsapp_api.use_cases.PrepareDebouncePayloadUsecase import prepare_debounce_payload
 from impl.whatsapp_api.use_cases.sendMessageToDebouncerUsecase import send_message_to_debouncer
@@ -23,11 +24,14 @@ class WhatsappApiWorkflow(ProcessWorkflow.ProcessWorkflow):
         message_data = get_message_data(event)
 
         # pega as variaveis de ambiente de acordo com o id do agente
+        supabase_data = get_supabase_data("WHATSAPP_API")
+
+
         agent_data = get_agent_data(f"WHATSAPP_API_{message_data["agent_id"]}")
 
         # busca a conversa no database
         # cria se nao encontrar
-        ai_conversation = upsert_conversation_usecase(agent_data)
+        ai_conversation = upsert_conversation_usecase(message_data["contactName"], message_data["contactNumber"], agent_data["agent_uuid"], supabase_data["url"], supabase_data["api_key"])
 
         # verifica se a mensagem eh do atendente
         # se for do atendente: pausa a ia, salva no historico e finaliza
