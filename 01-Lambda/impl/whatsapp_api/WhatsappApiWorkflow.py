@@ -18,19 +18,9 @@ class WhatsappApiWorkflow(ProcessWorkflow.ProcessWorkflow):
 
     @staticmethod
     def run(event: dict) -> dict:
-
-        # pega os campos necessarios do webhook do whatsapp
-        # numero, nome do contato, mensagem e id do agente
         message_data = get_message_data(event)
-
-        # pega as variaveis de ambiente de acordo com o id do agente
         supabase_data = get_supabase_data("WHATSAPP_API")
-
-
         agent_data = get_agent_data(f"WHATSAPP_API_{message_data["agent_id"]}")
-
-        # busca a conversa no database
-        # cria se nao encontrar
         ai_conversation = upsert_conversation_usecase(message_data["contactName"], message_data["contactNumber"], agent_data["agent_uuid"], supabase_data["url"], supabase_data["api_key"])
 
         # verifica se a mensagem eh do atendente
