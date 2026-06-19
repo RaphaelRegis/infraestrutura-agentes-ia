@@ -1,8 +1,9 @@
 package com.agents.debouncer.services.messagesDebouncer;
 
 import com.agents.debouncer.dto.MessageDTO;
+import reactor.core.publisher.Mono;
 
 public interface DebouncerService {
 
-    String debounceMessages(MessageDTO message);
+    Mono<Void> debounceMessages(MessageDTO message);
 }
