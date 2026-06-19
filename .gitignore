@@ -8,4 +8,7 @@
 01-Lambda/.idea/
 
 # Geral
+*__pycache__/
+*.idea/
+*venv/
 *.env
