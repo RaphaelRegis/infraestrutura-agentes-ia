@@ -20,7 +20,7 @@ public class MessageController {
     public ResponseEntity<String> debounceMessages(@RequestBody MessageDTO messageDTO) {
         debouncerService.debounceMessages(messageDTO).subscribe();
 
-        return ResponseEntity.accepted().body("Texto recebido!");
+        return ResponseEntity.accepted().body("mensagem_recebida");
     }
 
 
