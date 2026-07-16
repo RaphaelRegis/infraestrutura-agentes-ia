@@ -23,7 +23,7 @@ public class DebounceServiceImpl implements DebouncerService{
     @Override
     public Mono<Void> debounceMessages(ReceivedMessageDTO messageDTO) {
 
-        String keyId = getKeyIdUseCase.getKeyIdUseCase(messageDTO.agentID(), messageDTO.contactNumber(), messageDTO.contactName());
+        String keyId = getKeyIdUseCase.getKeyIdUseCase(messageDTO.conversationID());
 
         return searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)
                 .map(oldMessageString -> consolidateMessagesUseCase.consolidateMessagesUseCase(oldMessageString, messageDTO.message()))
@@ -37,6 +37,7 @@ public class DebounceServiceImpl implements DebouncerService{
                                                 messageDTO.agentID(),
                                                 messageDTO.contactNumber(),
                                                 messageDTO.contactName(),
+                                                messageDTO.conversationID(),
                                                 consolidatedMessage
                                         );
 

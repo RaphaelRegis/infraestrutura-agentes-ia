@@ -4,6 +4,7 @@ public record SendingMessageDTO(
         String agentID,
         String contactNumber,
         String contactName,
+        String conversationID,
         String message
 ) {
 }
