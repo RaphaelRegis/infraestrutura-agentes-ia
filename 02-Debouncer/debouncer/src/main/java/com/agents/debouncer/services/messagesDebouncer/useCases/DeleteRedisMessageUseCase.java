@@ -12,7 +12,7 @@ public class DeleteRedisMessageUseCase {
     private final ReactiveRedisTemplate<String, String> redisMessage;
 
     public Mono<Long> deleteRedisMessageUseCase(String keyId) {
-        System.out.println("DELETANDO MENSAGEM DO REDIS: \nKEY: " + keyId);
+        System.out.println("DELETANDO MENSAGEM DO REDIS | KEY: " + keyId);
 
         return redisMessage.delete(keyId);
     }

@@ -1,6 +1,6 @@
 package com.agents.debouncer.controllers;
 
-import com.agents.debouncer.dto.MessageDTO;
+import com.agents.debouncer.dto.ReceivedMessageDTO;
 import com.agents.debouncer.services.messagesDebouncer.DebouncerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class MessageController {
     private final DebouncerService debouncerService;
 
     @GetMapping("v1/debounceMessage")
-    public ResponseEntity<String> debounceMessages(@RequestBody MessageDTO messageDTO) {
+    public ResponseEntity<String> debounceMessages(@RequestBody ReceivedMessageDTO messageDTO) {
         debouncerService.debounceMessages(messageDTO).subscribe();
 
         return ResponseEntity.accepted().body("mensagem_recebida");

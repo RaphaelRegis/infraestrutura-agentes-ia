@@ -12,7 +12,7 @@ public class SearchRedisMessageUseCase {
     private final ReactiveRedisTemplate<String, String> redisMessage;
 
     public Mono<String> searchRedisMessageUseCase(String keyId) {
-        System.out.println("BUSCANDO MENSAGENS ANTIGAS NO REDIS...");
+        System.out.println("BUSCANDO MENSAGENS NO REDIS...");
 
         return redisMessage.opsForValue()
                 .get(keyId)

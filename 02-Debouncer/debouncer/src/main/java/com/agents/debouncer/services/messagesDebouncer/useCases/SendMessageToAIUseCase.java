@@ -1,6 +1,6 @@
 package com.agents.debouncer.services.messagesDebouncer.useCases;
 
-import com.agents.debouncer.dto.MessageDTO;
+import com.agents.debouncer.dto.SendingMessageDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class SendMessageToAIUseCase {
 
-    public Mono<Void> sendMessageToAIUseCase(MessageDTO finalMessageDTO) {
+    public Mono<Void> sendMessageToAIUseCase(SendingMessageDTO finalMessageDTO) {
 
         System.out.println("ENVIANDO MENSAGEM: " + finalMessageDTO.message());
 
