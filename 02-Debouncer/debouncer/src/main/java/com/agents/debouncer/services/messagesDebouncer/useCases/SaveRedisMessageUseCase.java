@@ -11,7 +11,7 @@ public class SaveRedisMessageUseCase {
     private final ReactiveRedisTemplate<String, String> redisMessage;
 
     public Mono<Void> saveRedisMessageUseCase(String keyId, String message) {
-        System.out.println("SALVANDO MENSAGEM NO REDIS: \nKEY: " + keyId + "\nMENSAGEM: " + message);
+        System.out.println("SALVANDO MENSAGEM NO REDIS | KEY: " + keyId + " | MENSAGEM: " + message);
         return redisMessage.opsForValue().set(keyId, message)
                 .then();
     }
