@@ -1,6 +1,7 @@
 package com.agents.debouncer.services.messagesDebouncer;
 
-import com.agents.debouncer.dto.MessageDTO;
+import com.agents.debouncer.dto.ReceivedMessageDTO;
+import com.agents.debouncer.dto.SendingMessageDTO;
 import com.agents.debouncer.services.messagesDebouncer.useCases.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,25 +21,34 @@ public class DebounceServiceImpl implements DebouncerService{
     private final SendMessageToAIUseCase sendMessageToAIUseCase;
 
     @Override
-    public Mono<Void> debounceMessages(MessageDTO messageDTO) {
+    public Mono<Void> debounceMessages(ReceivedMessageDTO messageDTO) {
 
         String keyId = getKeyIdUseCase.getKeyIdUseCase(messageDTO.agentID(), messageDTO.contactNumber(), messageDTO.contactName());
 
         return searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)
-                .map(oldMessageString -> {
-                    return consolidateMessagesUseCase.consolidateMessagesUseCase(oldMessageString, messageDTO.message());
-                })
-                .flatMap(messageToSave -> saveRedisMessageUseCase.saveRedisMessageUseCase(keyId, messageToSave))
-                .then(Mono.delay(Duration.ofSeconds(messageDTO.debounceSeconds())))
-                .then(Mono.defer(() -> searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)))
-                .flatMap(fullMessage -> {
-                    if (true/*fullMessage.equals(messageDTO.message()) || fullMessage*/) { // TODO: RESOLVER LOGICA PARA CAIR NESSE CASO
-                        return deleteRedisMessageUseCase.deleteRedisMessageUseCase(keyId)
-                                        .then(sendMessageToAIUseCase.sendMessageToAIUseCase(messageDTO));
-                    } else {
-                        return Mono.empty();
-                    }
-                })
+                .map(oldMessageString -> consolidateMessagesUseCase.consolidateMessagesUseCase(oldMessageString, messageDTO.message()))
+                .flatMap(consolidatedMessage ->
+                        saveRedisMessageUseCase.saveRedisMessageUseCase(keyId, consolidatedMessage)
+                                .then(Mono.delay(Duration.ofSeconds(messageDTO.debounceSeconds())))
+                                .then(Mono.defer(() -> searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)))
+                                .flatMap(fullMessage -> {
+                                    if (fullMessage.equals(consolidatedMessage)) {
+                                        SendingMessageDTO sendingMessageDTO = new SendingMessageDTO(
+                                                messageDTO.agentID(),
+                                                messageDTO.contactNumber(),
+                                                messageDTO.contactName(),
+                                                consolidatedMessage
+                                        );
+
+                                        return sendMessageToAIUseCase.sendMessageToAIUseCase(sendingMessageDTO)
+                                                .then(deleteRedisMessageUseCase.deleteRedisMessageUseCase(keyId));
+                                    } else {
+                                        System.out.println("PULANDO MENSAGEM...");
+                                        return Mono.empty();
+                                    }
+                                })
+                )
                 .then();
+
     }
 }

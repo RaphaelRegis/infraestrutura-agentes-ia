@@ -1,10 +1,9 @@
 package com.agents.debouncer.dto;
 
-public record MessageDTO(
-        String messageType,
+public record SendingMessageDTO(
         String agentID,
         String contactNumber,
         String contactName,
-        String message,
-        Integer debounceSeconds
-) {}
+        String message
+) {
+}
