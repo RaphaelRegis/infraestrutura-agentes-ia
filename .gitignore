@@ -7,8 +7,44 @@
 01-Lambda/__pycache__/
 01-Lambda/.idea/
 
+# Arquivos Debouncer
+02-Debouncer/debouncer/HELP.md
+02-Debouncer/debouncer/target/
+02-Debouncer/debouncer/.mvn/wrapper/maven-wrapper.jar
+02-Debouncer/debouncer/!**/src/main/**/target/
+02-Debouncer/debouncer/!**/src/test/**/target/
+
+### STS ###
+02-Debouncer/debouncer/.apt_generated
+02-Debouncer/debouncer/.classpath
+02-Debouncer/debouncer/.factorypath
+02-Debouncer/debouncer/.project
+02-Debouncer/debouncer/.settings
+02-Debouncer/debouncer/.springBeans
+02-Debouncer/debouncer/.sts4-cache
+
+### IntelliJ IDEA ###
+02-Debouncer/debouncer/*.iws
+02-Debouncer/debouncer/*.iml
+02-Debouncer/debouncer/*.ipr
+
+### NetBeans ###
+02-Debouncer/debouncer/nbproject/private/
+02-Debouncer/debouncer/nbbuild/
+02-Debouncer/debouncer/dist/
+02-Debouncer/debouncer/nbdist/
+02-Debouncer/debouncer/.nb-gradle/
+02-Debouncer/debouncer/build/
+02-Debouncer/debouncer/!**/src/main/**/build/
+02-Debouncer/debouncer/!**/src/test/**/build/
+
+### VS Code ###
+
+
+
 # Geral
 *__pycache__/
 *.idea/
 *venv/
 *.env
+*.vscode/
