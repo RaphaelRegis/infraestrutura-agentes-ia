@@ -1,9 +1,12 @@
 package com.messageAdapter.MessageAdapter.services.telegram;
 
+import com.messageAdapter.MessageAdapter.dto.telegram.audio.ReceivedTelegramAudioMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.text.ReceivedTelegramTextMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.common.SentTelegramMessageDTO;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.audio.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.image.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.text.PrepareTextBodyUseCase;
-import com.messageAdapter.MessageAdapter.services.telegram.useCases.common.SendToDebouncerUseCase;
+import com.messageAdapter.MessageAdapter.services.telegram.useCases.common.HandleFinalMessageUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,34 +25,36 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     private GetImageLinkUseCase getImageLinkUseCase;
     private PrepareImageBodyUseCase prepareImageBodyUseCase;
     private TranscribeImageUseCase transcribeImageUseCase;
-    private SendToDebouncerUseCase sendToDebouncerUseCase;
+    private HandleFinalMessageUseCase handleFinalMessageUseCase;
+    private final String messageApp = "TELEGRAM";
 
     @Override
-    public String adaptTextMessage() {
+    public void adaptTextMessage(ReceivedTelegramTextMessageDTO textMessageDTO) {
 
-        prepareTextBodyUseCase.prepareTextBodyUseCase();
-        sendToDebouncerUseCase.sendToDebouncerUseCase();
+        SentTelegramMessageDTO debouncerBody = prepareTextBodyUseCase.prepareTextBodyUseCase(textMessageDTO, this.messageApp);
+        handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, textMessageDTO.isPaused());
 
-        return "";
     }
 
     @Override
-    public String adaptAudioMessage() {
+    public void adaptAudioMessage(ReceivedTelegramAudioMessageDTO audioMessageDTO) {
 
         // pega o link do audio
-        getAudioLinkUseCase.getAudioLinkUseCase();
+        String filePath = getAudioLinkUseCase.getAudioLinkUseCase(audioMessageDTO.fileID(), audioMessageDTO.botToken());
+
         // baixa
-        downloadAudioUseCase.downloadAudioUseCase();
+        byte[] audioFile = downloadAudioUseCase.downloadAudioUseCase(audioMessageDTO.botToken(), filePath);
+
+        // TODO: CONTINUE DAQUI
         // converte em base64
         convertAudioToBase64UseCase.convertAudioToBase64UseCase();
         // joga para a IA
         transcribeAudioUseCase.transcribeAudioUseCase();
         // prepara o objeto com o texto do audio
         prepareAudioBodyUseCase.prepareAudioBodyUseCase();
-        // manda para o debouncer
-        sendToDebouncerUseCase.sendToDebouncerUseCase();
+        // salva no contexto caso necessario e manda para o debouncer
+        handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
 
-        return "";
     }
 
     @Override
@@ -65,8 +70,8 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         transcribeImageUseCase.transcribeImageUseCase();
         // prepara o objeto com o texto da imagem
         prepareImageBodyUseCase.prepareImageBodyUseCase();
-        // manda para o debouncer
-        sendToDebouncerUseCase.sendToDebouncerUseCase();
+        // salva no contexto caso necessario e manda para o debouncer
+        handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
 
         return "";
     }
