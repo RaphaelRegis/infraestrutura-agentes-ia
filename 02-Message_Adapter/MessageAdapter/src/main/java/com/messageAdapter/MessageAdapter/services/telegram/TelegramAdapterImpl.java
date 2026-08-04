@@ -3,7 +3,7 @@ package com.messageAdapter.MessageAdapter.services.telegram;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.audio.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.image.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.text.PrepareTextBodyUseCase;
-import com.messageAdapter.MessageAdapter.services.telegram.useCases.common.SendToDebouncerUseCase;
+import com.messageAdapter.MessageAdapter.services.telegram.useCases.common.HandleFinalMessageUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +22,13 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     private GetImageLinkUseCase getImageLinkUseCase;
     private PrepareImageBodyUseCase prepareImageBodyUseCase;
     private TranscribeImageUseCase transcribeImageUseCase;
-    private SendToDebouncerUseCase sendToDebouncerUseCase;
+    private HandleFinalMessageUseCase handleFinalMessageUseCase;
 
     @Override
     public String adaptTextMessage() {
 
         prepareTextBodyUseCase.prepareTextBodyUseCase();
-        sendToDebouncerUseCase.sendToDebouncerUseCase();
+        handleFinalMessageUseCase.handleFinalMessageUseCase();
 
         return "";
     }
@@ -46,8 +46,8 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         transcribeAudioUseCase.transcribeAudioUseCase();
         // prepara o objeto com o texto do audio
         prepareAudioBodyUseCase.prepareAudioBodyUseCase();
-        // manda para o debouncer
-        sendToDebouncerUseCase.sendToDebouncerUseCase();
+        // salva no contexto caso necessario e manda para o debouncer
+        handleFinalMessageUseCase.handleFinalMessageUseCase();
 
         return "";
     }
@@ -65,8 +65,8 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         transcribeImageUseCase.transcribeImageUseCase();
         // prepara o objeto com o texto da imagem
         prepareImageBodyUseCase.prepareImageBodyUseCase();
-        // manda para o debouncer
-        sendToDebouncerUseCase.sendToDebouncerUseCase();
+        // salva no contexto caso necessario e manda para o debouncer
+        handleFinalMessageUseCase.handleFinalMessageUseCase();
 
         return "";
     }
