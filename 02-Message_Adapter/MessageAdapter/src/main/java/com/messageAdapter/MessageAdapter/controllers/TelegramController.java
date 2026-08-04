@@ -1,7 +1,10 @@
 package com.messageAdapter.MessageAdapter.controllers;
 
+import com.messageAdapter.MessageAdapter.dto.telegram.ReceivedTelegramTextMessageDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class TelegramController {
 
-    public ResponseEntity<String> adaptMessage() {
+    @PostMapping("/text")
+    public ResponseEntity<String> adaptTextMessage(@RequestBody ReceivedTelegramTextMessageDTO textMessageDTO) {
         return ResponseEntity.accepted().body("mensagem_recebida");
     }
 }

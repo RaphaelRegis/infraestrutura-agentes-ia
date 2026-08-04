@@ -1,5 +1,7 @@
 package com.messageAdapter.MessageAdapter.services.telegram;
 
+import com.messageAdapter.MessageAdapter.dto.telegram.ReceivedTelegramTextMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.SentTelegramMessageDTO;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.audio.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.image.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.text.PrepareTextBodyUseCase;
@@ -25,12 +27,11 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     private HandleFinalMessageUseCase handleFinalMessageUseCase;
 
     @Override
-    public String adaptTextMessage() {
+    public void adaptTextMessage(ReceivedTelegramTextMessageDTO textMessageDTO) {
 
-        prepareTextBodyUseCase.prepareTextBodyUseCase();
-        handleFinalMessageUseCase.handleFinalMessageUseCase();
+        SentTelegramMessageDTO debouncerBody = prepareTextBodyUseCase.prepareTextBodyUseCase(textMessageDTO);
+        handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, textMessageDTO.isPaused());
 
-        return "";
     }
 
     @Override
@@ -47,7 +48,7 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         // prepara o objeto com o texto do audio
         prepareAudioBodyUseCase.prepareAudioBodyUseCase();
         // salva no contexto caso necessario e manda para o debouncer
-        handleFinalMessageUseCase.handleFinalMessageUseCase();
+        handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
 
         return "";
     }
@@ -66,7 +67,7 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         // prepara o objeto com o texto da imagem
         prepareImageBodyUseCase.prepareImageBodyUseCase();
         // salva no contexto caso necessario e manda para o debouncer
-        handleFinalMessageUseCase.handleFinalMessageUseCase();
+        handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
 
         return "";
     }
