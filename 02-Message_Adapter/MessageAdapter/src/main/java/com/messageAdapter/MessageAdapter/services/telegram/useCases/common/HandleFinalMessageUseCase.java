@@ -1,6 +1,6 @@
 package com.messageAdapter.MessageAdapter.services.telegram.useCases.common;
 
-import com.messageAdapter.MessageAdapter.dto.telegram.SentTelegramMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.common.SentTelegramMessageDTO;
 import org.springframework.stereotype.Component;
 
 @Component

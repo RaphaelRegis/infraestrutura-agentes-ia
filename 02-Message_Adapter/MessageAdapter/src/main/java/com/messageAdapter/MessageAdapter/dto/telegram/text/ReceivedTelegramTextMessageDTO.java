@@ -1,4 +1,4 @@
-package com.messageAdapter.MessageAdapter.dto.telegram;
+package com.messageAdapter.MessageAdapter.dto.telegram.text;
 
 public record ReceivedTelegramTextMessageDTO(
         String agentID,
