@@ -1,7 +1,8 @@
 package com.messageAdapter.MessageAdapter.services.telegram;
 
-import com.messageAdapter.MessageAdapter.dto.telegram.ReceivedTelegramTextMessageDTO;
-import com.messageAdapter.MessageAdapter.dto.telegram.SentTelegramMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.audio.ReceivedTelegramAudioMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.text.ReceivedTelegramTextMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.common.SentTelegramMessageDTO;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.audio.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.image.*;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.text.PrepareTextBodyUseCase;
@@ -36,12 +37,15 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     }
 
     @Override
-    public String adaptAudioMessage() {
+    public void adaptAudioMessage(ReceivedTelegramAudioMessageDTO audioMessageDTO) {
 
         // pega o link do audio
-        getAudioLinkUseCase.getAudioLinkUseCase();
+        String filePath = getAudioLinkUseCase.getAudioLinkUseCase(audioMessageDTO.fileID(), audioMessageDTO.botToken());
+
         // baixa
-        downloadAudioUseCase.downloadAudioUseCase();
+        byte[] audioFile = downloadAudioUseCase.downloadAudioUseCase(audioMessageDTO.botToken(), filePath);
+
+        // TODO: CONTINUE DAQUI
         // converte em base64
         convertAudioToBase64UseCase.convertAudioToBase64UseCase();
         // joga para a IA
@@ -51,7 +55,6 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         // salva no contexto caso necessario e manda para o debouncer
         handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
 
-        return "";
     }
 
     @Override
