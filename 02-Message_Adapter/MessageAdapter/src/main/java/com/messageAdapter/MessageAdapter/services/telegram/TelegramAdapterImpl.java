@@ -25,11 +25,12 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     private PrepareImageBodyUseCase prepareImageBodyUseCase;
     private TranscribeImageUseCase transcribeImageUseCase;
     private HandleFinalMessageUseCase handleFinalMessageUseCase;
+    private final String messageApp = "TELEGRAM";
 
     @Override
     public void adaptTextMessage(ReceivedTelegramTextMessageDTO textMessageDTO) {
 
-        SentTelegramMessageDTO debouncerBody = prepareTextBodyUseCase.prepareTextBodyUseCase(textMessageDTO);
+        SentTelegramMessageDTO debouncerBody = prepareTextBodyUseCase.prepareTextBodyUseCase(textMessageDTO, this.messageApp);
         handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, textMessageDTO.isPaused());
 
     }
