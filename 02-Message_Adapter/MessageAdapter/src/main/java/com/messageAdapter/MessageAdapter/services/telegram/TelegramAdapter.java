@@ -1,10 +1,15 @@
 package com.messageAdapter.MessageAdapter.services.telegram;
 
+import com.messageAdapter.MessageAdapter.dto.telegram.audio.ReceivedTelegramAudioMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.text.ReceivedTelegramTextMessageDTO;
+
 public interface TelegramAdapter {
 
-    public String adaptTextMessage();
-    public String adaptAudioMessage();
-    public String adaptImageMessage();
+    void adaptTextMessage(ReceivedTelegramTextMessageDTO textMessageDTO);
+
+    void adaptAudioMessage(ReceivedTelegramAudioMessageDTO audioMessageDTO);
+
+    String adaptImageMessage();
 
 
 
