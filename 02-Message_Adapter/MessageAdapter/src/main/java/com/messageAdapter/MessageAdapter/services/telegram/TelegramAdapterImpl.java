@@ -10,12 +10,14 @@ import com.messageAdapter.MessageAdapter.services.telegram.useCases.common.Handl
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 @AllArgsConstructor
 public class TelegramAdapterImpl implements TelegramAdapter{
 
     private PrepareTextBodyUseCase prepareTextBodyUseCase;
-    private ConvertAudioToBase64UseCase convertAudioToBase64UseCase;
+    private ConvertAudioToBase64UseCase convertAudioToMp3UseCase;
     private DownloadAudioUseCase downloadAudioUseCase;
     private GetAudioLinkUseCase getAudioLinkUseCase;
     private PrepareAudioBodyUseCase prepareAudioBodyUseCase;
@@ -37,23 +39,19 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     }
 
     @Override
-    public void adaptAudioMessage(ReceivedTelegramAudioMessageDTO audioMessageDTO) {
+    public void adaptAudioMessage(ReceivedTelegramAudioMessageDTO audioMessageDTO) throws IOException, InterruptedException {
 
-        // pega o link do audio
         String filePath = getAudioLinkUseCase.getAudioLinkUseCase(audioMessageDTO.fileID(), audioMessageDTO.botToken());
 
-        // baixa
         byte[] audioFile = downloadAudioUseCase.downloadAudioUseCase(audioMessageDTO.botToken(), filePath);
 
-        // TODO: CONTINUE DAQUI
-        // converte em base64
-        convertAudioToBase64UseCase.convertAudioToBase64UseCase();
-        // joga para a IA
-        transcribeAudioUseCase.transcribeAudioUseCase();
-        // prepara o objeto com o texto do audio
-        prepareAudioBodyUseCase.prepareAudioBodyUseCase();
-        // salva no contexto caso necessario e manda para o debouncer
-        handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
+        byte[] mp3AudioFile = convertAudioToMp3UseCase.convertAudioToMp3UseCase(audioFile);
+
+        String transcribedAudio = transcribeAudioUseCase.transcribeAudioUseCase(mp3AudioFile);
+
+        SentTelegramMessageDTO  debouncerBody = prepareAudioBodyUseCase.prepareAudioBodyUseCase(audioMessageDTO, transcribedAudio, messageApp);
+
+        handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, audioMessageDTO.isPaused());
 
     }
 
