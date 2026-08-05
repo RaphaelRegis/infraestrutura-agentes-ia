@@ -17,7 +17,7 @@ import java.io.IOException;
 public class TelegramAdapterImpl implements TelegramAdapter{
 
     private PrepareTextBodyUseCase prepareTextBodyUseCase;
-    private ConvertAudioToBase64UseCase convertAudioToMp3UseCase;
+    private ConvertAudioToMp3UseCase convertAudioToMp3UseCase;
     private DownloadAudioUseCase downloadAudioUseCase;
     private GetAudioLinkUseCase getAudioLinkUseCase;
     private PrepareAudioBodyUseCase prepareAudioBodyUseCase;

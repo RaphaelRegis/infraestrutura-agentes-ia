@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Component
-public class ConvertAudioToBase64UseCase {
+public class ConvertAudioToMp3UseCase {
 
     public byte[] convertAudioToMp3UseCase(byte[] ogaBytes) throws IOException, InterruptedException {
 
