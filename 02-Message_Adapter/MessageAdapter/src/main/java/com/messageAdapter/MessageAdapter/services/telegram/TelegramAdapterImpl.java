@@ -1,6 +1,7 @@
 package com.messageAdapter.MessageAdapter.services.telegram;
 
 import com.messageAdapter.MessageAdapter.dto.telegram.audio.ReceivedTelegramAudioMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.image.ReceivedTelegramImageMessageDTO;
 import com.messageAdapter.MessageAdapter.dto.telegram.text.ReceivedTelegramTextMessageDTO;
 import com.messageAdapter.MessageAdapter.dto.telegram.common.SentTelegramMessageDTO;
 import com.messageAdapter.MessageAdapter.services.telegram.useCases.audio.*;
@@ -51,7 +52,7 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     }
 
     @Override
-    public String adaptImageMessage() {
+    public void adaptImageMessage(ReceivedTelegramImageMessageDTO imageMessageDTO) {
 
         // pega o link da imagem
         getImageLinkUseCase.getImageLinkUseCase();
@@ -66,6 +67,5 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         // salva no contexto caso necessario e manda para o debouncer
         handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
 
-        return "";
     }
 }
