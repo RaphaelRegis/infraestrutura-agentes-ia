@@ -1,6 +1,7 @@
 package com.messageAdapter.MessageAdapter.controllers;
 
 import com.messageAdapter.MessageAdapter.dto.telegram.audio.ReceivedTelegramAudioMessageDTO;
+import com.messageAdapter.MessageAdapter.dto.telegram.image.ReceivedTelegramImageMessageDTO;
 import com.messageAdapter.MessageAdapter.dto.telegram.text.ReceivedTelegramTextMessageDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,11 @@ public class TelegramController {
 
     @PostMapping("/audio")
     public ResponseEntity<String> adaptAudioMessage(@RequestBody ReceivedTelegramAudioMessageDTO audioMessageDTO) {
+        return ResponseEntity.accepted().body("mensagem_recebida");
+    }
+
+    @PostMapping("/image")
+    public ResponseEntity<String> adaptImageMessage(@RequestBody ReceivedTelegramImageMessageDTO imageMessageDTO) {
         return ResponseEntity.accepted().body("mensagem_recebida");
     }
 }
