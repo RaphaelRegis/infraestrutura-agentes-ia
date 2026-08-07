@@ -20,29 +20,34 @@ public class HandleFinalMessageUseCase {
     public void handleFinalMessageUseCase(SentTelegramMessageDTO debouncerBody, Boolean paused) {
 
         if (paused) {
-            ConversationMessage conversationMessage = ConversationMessage.builder()
-                    .chatID(debouncerBody.chatID())
-                    .message(debouncerBody.message())
-                    .fromUser(true)
-                    .messageTimestamp(LocalDateTime.now())
-                    .build();
-
-            conversationMessageRepository.save(conversationMessage);
+            saveMessageInContext(debouncerBody);
 
         } else {
-            String debouncerUri = "/debounceMessage";
-
-            String result = debouncerClient.post()
-                    .uri(debouncerUri)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(debouncerBody)
-                    .retrieve()
-                    .toString();
+            sendToDebouncer(debouncerBody);
 
         }
 
     }
 
+    public void saveMessageInContext(SentTelegramMessageDTO debouncerBody) {
+        ConversationMessage conversationMessage = ConversationMessage.builder()
+                .chatID(debouncerBody.chatID())
+                .message(debouncerBody.message())
+                .fromUser(true)
+                .messageTimestamp(LocalDateTime.now())
+                .build();
 
+        conversationMessageRepository.save(conversationMessage);
+    }
 
+    public void sendToDebouncer(SentTelegramMessageDTO debouncerBody) {
+        String debouncerUri = "/debounceMessage";
+
+        String result = debouncerClient.post()
+                .uri(debouncerUri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(debouncerBody)
+                .retrieve()
+                .toString();
+    }
 }
