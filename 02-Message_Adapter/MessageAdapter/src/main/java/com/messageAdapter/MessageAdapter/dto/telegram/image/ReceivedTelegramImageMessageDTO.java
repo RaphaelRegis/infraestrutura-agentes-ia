@@ -5,6 +5,7 @@ public record ReceivedTelegramImageMessageDTO(
         String chatID,
         String contactName,
         String fileID,
+        String imageCaption,
         String botToken,
         Boolean isPaused,
         Integer debounceSeconds

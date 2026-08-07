@@ -46,7 +46,7 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         byte[] audioFile = downloadAudioUseCase.downloadAudioUseCase(audioMessageDTO.botToken(), filePath);
         byte[] mp3AudioFile = convertAudioToMp3UseCase.convertAudioToMp3UseCase(audioFile);
         String transcribedAudio = transcribeAudioUseCase.transcribeAudioUseCase(mp3AudioFile);
-        SentTelegramMessageDTO  debouncerBody = prepareAudioBodyUseCase.prepareAudioBodyUseCase(audioMessageDTO, transcribedAudio, messageApp);
+        SentTelegramMessageDTO debouncerBody = prepareAudioBodyUseCase.prepareAudioBodyUseCase(audioMessageDTO, transcribedAudio, messageApp);
         handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, audioMessageDTO.isPaused());
 
     }
@@ -54,18 +54,11 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     @Override
     public void adaptImageMessage(ReceivedTelegramImageMessageDTO imageMessageDTO) {
 
-        // pega o link da imagem
-        getImageLinkUseCase.getImageLinkUseCase();
-        // baixa
-        downloadImageUseCase.downloadImageUseCase();
-        // converte em base64
-        convertImageToBase64UseCase.convertImageToBase64UseCase();
-        // joga para a IA
-        transcribeImageUseCase.transcribeImageUseCase();
-        // prepara o objeto com o texto da imagem
-        prepareImageBodyUseCase.prepareImageBodyUseCase();
-        // salva no contexto caso necessario e manda para o debouncer
-        handleFinalMessageUseCase.handleFinalMessageUseCase(null, null);
+        String filePath = getImageLinkUseCase.getImageLinkUseCase(imageMessageDTO.fileID(), imageMessageDTO.botToken());
+        byte[] imageBytes = downloadImageUseCase.downloadImageUseCase(imageMessageDTO.botToken(), filePath);
+        String transcribedImage = transcribeImageUseCase.transcribeImageUseCase(imageBytes, imageMessageDTO.imageCaption());
+        SentTelegramMessageDTO debouncerBody =  prepareImageBodyUseCase.prepareImageBodyUseCase(imageMessageDTO, transcribedImage, messageApp);
+        handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, imageMessageDTO.isPaused());
 
     }
 }
