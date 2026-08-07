@@ -4,7 +4,9 @@ import com.messageAdapter.MessageAdapter.dto.telegram.common.SentTelegramMessage
 import com.messageAdapter.MessageAdapter.entities.telegram.ConversationMessage;
 import com.messageAdapter.MessageAdapter.repositories.telegram.ConversationMessageRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClient;
 
 import java.time.LocalDateTime;
 
@@ -13,11 +15,11 @@ import java.time.LocalDateTime;
 public class HandleFinalMessageUseCase {
 
     private final ConversationMessageRepository conversationMessageRepository;
+    private final RestClient debouncerClient;
 
     public void handleFinalMessageUseCase(SentTelegramMessageDTO debouncerBody, Boolean paused) {
 
         if (paused) {
-            // salva mensagem no contexto
             ConversationMessage conversationMessage = ConversationMessage.builder()
                     .chatID(debouncerBody.chatID())
                     .message(debouncerBody.message())
@@ -28,7 +30,15 @@ public class HandleFinalMessageUseCase {
             conversationMessageRepository.save(conversationMessage);
 
         } else {
-            // envia para debouncer
+            String debouncerUri = "/debounceMessage";
+
+            String result = debouncerClient.post()
+                    .uri(debouncerUri)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(debouncerBody)
+                    .retrieve()
+                    .toString();
+
         }
 
     }
