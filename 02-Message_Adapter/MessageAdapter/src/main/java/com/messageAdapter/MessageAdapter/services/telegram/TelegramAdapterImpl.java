@@ -42,15 +42,10 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     public void adaptAudioMessage(ReceivedTelegramAudioMessageDTO audioMessageDTO) throws IOException, InterruptedException {
 
         String filePath = getAudioLinkUseCase.getAudioLinkUseCase(audioMessageDTO.fileID(), audioMessageDTO.botToken());
-
         byte[] audioFile = downloadAudioUseCase.downloadAudioUseCase(audioMessageDTO.botToken(), filePath);
-
         byte[] mp3AudioFile = convertAudioToMp3UseCase.convertAudioToMp3UseCase(audioFile);
-
         String transcribedAudio = transcribeAudioUseCase.transcribeAudioUseCase(mp3AudioFile);
-
         SentTelegramMessageDTO  debouncerBody = prepareAudioBodyUseCase.prepareAudioBodyUseCase(audioMessageDTO, transcribedAudio, messageApp);
-
         handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, audioMessageDTO.isPaused());
 
     }
