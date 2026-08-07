@@ -25,6 +25,14 @@ public class TelegramHTTPConfig {
                 .build();
     }
 
+    @Bean
+    @Qualifier("downloadFile")
+    public RestClient debouncerClient() {
+        return RestClient.builder()
+                .baseUrl("https://localhost:8080/api/v1")
+                .build();
+    }
+
 
 
 
