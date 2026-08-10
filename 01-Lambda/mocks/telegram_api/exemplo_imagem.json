@@ -1,0 +1,15 @@
+{
+  "update_id": 123456791,
+  "message": {
+    "message_id": 44,
+    "from": { "id": 987654321, "is_bot": false, "first_name": "Maria" },
+    "chat": { "id": 987654321, "type": "private" },
+    "date": 1753267320,
+    "photo": [
+      { "file_id": "AgACAgIAAxkBAAI...", "file_unique_id": "AQAD...", "width": 90, "height": 90, "file_size": 1523 },
+      { "file_id": "AgACAgIAAxkBAAI...", "file_unique_id": "AQAD...", "width": 320, "height": 320, "file_size": 15234 },
+      { "file_id": "AgACAgIAAxkBAAI...", "file_unique_id": "AQAD...", "width": 800, "height": 800, "file_size": 68421 }
+    ],
+    "caption": "Segue o comprovante do pagamento"
+  }
+}
