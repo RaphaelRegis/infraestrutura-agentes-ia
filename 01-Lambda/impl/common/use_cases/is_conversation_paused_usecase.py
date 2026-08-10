@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 import re
 
 
-def is_conversation_paused(pause_minutes: int, paused_at: str) -> bool:
+def is_conversation_paused_usecase(pause_minutes: int, paused_at: str) -> bool:
     print("Verificando se a conversa está pausada...")
     # a ideia eh que o update da conversa representa
 

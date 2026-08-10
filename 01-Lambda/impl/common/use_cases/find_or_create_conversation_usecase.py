@@ -42,7 +42,7 @@ def create_conversation(contact_name: str, contact_number: str, agent_uuid: str,
 
     return response.json()[0]
 
-def upsert_conversation_usecase(contact_name: str, contact_number: str, agent_uuid: str, url: str, api_key: str):
+def find_or_create_conversation_usecase(contact_name: str, contact_number: str, agent_uuid: str, url: str, api_key: str):
 
     print("Criando ou buscando os dados da conversa...")
 

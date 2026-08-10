@@ -2,7 +2,7 @@ import os
 import json
 from dotenv import load_dotenv
 
-def get_agent_data(agent_id: str) -> dict:
+def get_agent_data_usecase(agent_id: str) -> dict:
         print("Pegando dados do agente...")
 
         load_dotenv()
