@@ -1,4 +1,4 @@
-from impl.common.use_cases.GetSupabaseDataUseCase import get_supabase_data
+from impl.common.use_cases.get_database_info_usecase import get_database_info_usecase
 from strategy import ProcessWorkflow
 from impl.whatsapp_api.use_cases.PrepareDebouncePayloadUsecase import prepare_debounce_payload
 from impl.whatsapp_api.use_cases.sendMessageToDebouncerUsecase import send_message_to_debouncer
@@ -6,7 +6,7 @@ from impl.whatsapp_api.use_cases.IsConversationPausedUsecase import is_conversat
 from impl.whatsapp_api.use_cases.IsFromAtendentUsecase import is_from_attendent
 from impl.whatsapp_api.use_cases.ProcessAtendentMessageUsecase import process_atendent_message
 from impl.whatsapp_api.use_cases.ProcessPausedMessageUsecase import process_paused_message
-from impl.whatsapp_api.use_cases.UpsertConversationUsecase import upsert_conversation_usecase
+from impl.whatsapp_api.use_cases.UpsertConversationUsecase import find_or_create_conversation_usecase
 from impl.whatsapp_api.use_cases.GetAgentDataUsecase import get_agent_data
 from impl.whatsapp_api.use_cases.GetEventDataUsecase import get_message_data
 
@@ -19,9 +19,9 @@ class WhatsappApiWorkflow(ProcessWorkflow.ProcessWorkflow):
     @staticmethod
     def run(event: dict) -> dict:
         message_data = get_message_data(event)
-        supabase_data = get_supabase_data("WHATSAPP_API")
+        supabase_data = get_database_info_usecase("WHATSAPP_API")
         agent_data = get_agent_data(f"WHATSAPP_API_{message_data["agent_id"]}")
-        ai_conversation = upsert_conversation_usecase(message_data["contactName"], message_data["contactNumber"], agent_data["agent_uuid"], supabase_data["url"], supabase_data["api_key"])
+        ai_conversation = find_or_create_conversation_usecase(message_data["contactName"], message_data["contactNumber"], agent_data["agent_uuid"], supabase_data["url"], supabase_data["api_key"])
 
         # verifica se a mensagem eh do atendente
         message_from_atendent = is_from_attendent(message_data)

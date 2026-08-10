@@ -2,7 +2,7 @@ import os
 import json
 from dotenv import load_dotenv
 
-def get_supabase_data(agent_type: str):
+def get_database_info_usecase(agent_type: str):
 
     load_dotenv()
 
