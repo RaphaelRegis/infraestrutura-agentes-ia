@@ -1,9 +1,7 @@
 def get_telegram_message_data_usecase(event: dict) -> dict:
 
     # prepara os campos comuns
-    # TODO: arrumar o agent_id
     message_data = {
-        "agent_id": "",
         "contact_number": event["message"]["chat"]["id"],
         "contact_name": event["message"]["chat"]["username"],
     }

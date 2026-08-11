@@ -3,7 +3,7 @@
   "message": {
     "message_id": 43,
     "from": { "id": 987654321, "is_bot": false, "first_name": "Maria" },
-    "chat": { "id": 987654321, "type": "private" },
+    "chat": { "id": 987654321, "first_name": "Maria", "username": "maria_silva", "type": "private" },
     "date": 1753267260,
     "voice": {
       "duration": 8,
