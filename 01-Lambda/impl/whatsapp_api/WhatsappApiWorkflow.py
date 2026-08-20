@@ -1,0 +1,49 @@
+from impl.common.use_cases.get_database_info_usecase import get_database_info_usecase
+from strategy import ProcessWorkflow
+from impl.whatsapp_api.use_cases.prepare_debounce_payload_usecase import prepare_debounce_payload
+from impl.whatsapp_api.use_cases.send_message_to_debouncer_usecase import send_message_to_debouncer
+from impl.common.use_cases.is_conversation_paused_usecase import is_conversation_paused_usecase
+from impl.whatsapp_api.use_cases.is_from_atendent_usecase import is_from_attendent
+from impl.whatsapp_api.use_cases.process_atendent_message_usecase import process_atendent_message
+from impl.whatsapp_api.use_cases.process_paused_message_usecase import process_paused_message
+from impl.common.use_cases.find_or_create_conversation_usecase import find_or_create_conversation_usecase
+from impl.common.use_cases.get_agent_data_usecase import get_agent_data_usecase
+from impl.whatsapp_api.use_cases.get_event_data_usecase import get_message_data
+
+
+class WhatsappApiWorkflow(ProcessWorkflow.ProcessWorkflow):
+
+    def __init__(self):
+        super().__init__()
+
+    @staticmethod
+    def run(event: dict) -> dict:
+        message_data = get_message_data(event)
+        supabase_data = get_database_info_usecase("WHATSAPP_API")
+        agent_data = get_agent_data_usecase(f"WHATSAPP_API_{message_data["agent_id"]}")
+        ai_conversation = find_or_create_conversation_usecase(message_data["contactName"], message_data["contactNumber"], agent_data["agent_uuid"], supabase_data["url"], supabase_data["api_key"])
+
+        # verifica se a mensagem eh do atendente
+        message_from_atendent = is_from_attendent(message_data)
+
+        # se for do atendente: pausa a ia, salva no historico e finaliza
+        # se nao for do atendente: prossegue com o fluxo
+        if message_from_atendent:
+            process_atendent_message(message_data)
+            return {}
+
+
+        paused_conversation = is_conversation_paused_usecase(agent_data["pause_minutes"], ai_conversation["paused_at"])
+
+        if paused_conversation:
+            process_paused_message(message_data, ai_conversation)
+            return {}
+
+        # manda mensagem para o debouncer
+        # prepara o payload com: id do agente, nome do contato, numero do contato, id da conversa, tipo de mensagem, mensagem e tempo de debounce
+        debouncer_payload = prepare_debounce_payload(ai_conversation, message_data, agent_data)
+
+        # chamar o debouncer
+        result = send_message_to_debouncer(debouncer_payload)
+
+        return result
