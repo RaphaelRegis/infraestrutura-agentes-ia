@@ -12,16 +12,17 @@ import com.openai.models.audio.AudioResponseFormat;
 @AllArgsConstructor
 public class TranscribeAudioUseCase {
 
-    private final TranscriptionModel transcriptionModel;
+    // private final TranscriptionModel transcriptionModel;
 
     public String transcribeAudioUseCase(byte[] audioBytes) {
-        ByteArrayResource resource = new ByteArrayResource(audioBytes);
-
-        OpenAiAudioTranscriptionOptions options = OpenAiAudioTranscriptionOptions.builder()
-                .responseFormat(AudioResponseFormat.TEXT)
-                .build();
-
-        AudioTranscriptionPrompt prompt = new AudioTranscriptionPrompt(resource, options);
-        return transcriptionModel.call(prompt).getResult().getOutput();
+//        ByteArrayResource resource = new ByteArrayResource(audioBytes);
+//
+//        OpenAiAudioTranscriptionOptions options = OpenAiAudioTranscriptionOptions.builder()
+//                .responseFormat(AudioResponseFormat.TEXT)
+//                .build();
+//
+//        AudioTranscriptionPrompt prompt = new AudioTranscriptionPrompt(resource, options);
+//        return transcriptionModel.call(prompt).getResult().getOutput();
+        return "Audio transcrito MOCK";
     }
 }
