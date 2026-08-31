@@ -22,21 +22,19 @@ class TelegramApiWorkflow(ProcessWorkflow.ProcessWorkflow):
         database_info = get_database_info_usecase("TELEGRAM_API")
 
         # pega os dados do agente
-        # IRAH VIR DO WEBHOOK
+        # IRAH VIR DO CAMINHO DO WEBHOOK
         agent_data = get_agent_data_usecase(f"TELEGRAM_API_{"106540352242922"}")
 
         # cria ou busca/atualiza a conversa
-        ai_conversation = find_or_create_conversation_usecase(database_info)
+        ai_conversation = find_or_create_conversation_usecase(message_data["contact_name"], message_data["contact_number"], agent_data["agent_uuid"], database_info["url"], database_info["api_key"])
 
         # verifica se esta pausada
-        #is_paused = is_conversation_paused_usecase(ai_conversation)
+        is_paused = is_conversation_paused_usecase(agent_data["pause_minutes"], ai_conversation["paused_at"])
 
         # prepara o corpo para o message_adapter
-        #message_adapter_payload = prepare_telegram_message_adapter_payload_usecase(message_data, ai_conversation, agent_data, is_paused)
+        message_adapter_payload = prepare_telegram_message_adapter_payload_usecase(message_data, ai_conversation, agent_data, is_paused)
 
         # envia de maneira assincrona para o message_adapter
-        #result = send_to_message_adapter_usecase(message_adapter_payload)
+        result = send_to_message_adapter_usecase(message_adapter_payload, message_data["message_type"])
 
-        #return result
-
-        return database_info
+        return result
