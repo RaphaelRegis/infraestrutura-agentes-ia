@@ -9,23 +9,25 @@ import org.springframework.util.MimeTypeUtils;
 @Component
 public class TranscribeImageUseCase {
 
-    private final ChatClient chatClient;
+    //private final ChatClient chatClient;
 
-    public TranscribeImageUseCase(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
-    }
+//    public TranscribeImageUseCase(ChatClient.Builder chatClientBuilder) {
+//        this.chatClient = chatClientBuilder.build();
+//    }
 
     public String transcribeImageUseCase(byte[] imageBytes, String imageCaption) {
 
-        Resource imageResource = new ByteArrayResource(imageBytes);
+//        Resource imageResource = new ByteArrayResource(imageBytes);
+//
+//        // TODO: O PROMPT DA IMAGEM DEVE VIR DE REPOSITÓRIO EXTERNO
+//        return chatClient.prompt()
+//                .user(userMessage -> userMessage
+//                        .text("")
+//                        .text("Legenda da imagem: " + imageCaption)
+//                        .media(MimeTypeUtils.parseMimeType(""), imageResource))
+//                .call()
+//                .content();
 
-        // TODO: O PROMPT DA IMAGEM DEVE VIR DE REPOSITÓRIO EXTERNO
-        return chatClient.prompt()
-                .user(userMessage -> userMessage
-                        .text("")
-                        .text("Legenda da imagem: " + imageCaption)
-                        .media(MimeTypeUtils.parseMimeType(""), imageResource))
-                .call()
-                .content();
+        return "Imagem transcrita MOCK";
     }
 }
