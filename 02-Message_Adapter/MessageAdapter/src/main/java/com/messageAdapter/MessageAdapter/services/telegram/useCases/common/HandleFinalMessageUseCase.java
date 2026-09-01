@@ -4,6 +4,7 @@ import com.messageAdapter.MessageAdapter.dto.telegram.common.SentTelegramMessage
 import com.messageAdapter.MessageAdapter.entities.telegram.ConversationMessage;
 import com.messageAdapter.MessageAdapter.repositories.telegram.ConversationMessageRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -11,11 +12,15 @@ import org.springframework.web.client.RestClient;
 import java.time.LocalDateTime;
 
 @Component
-@AllArgsConstructor
 public class HandleFinalMessageUseCase {
 
     private final ConversationMessageRepository conversationMessageRepository;
     private final RestClient debouncerClient;
+
+    public HandleFinalMessageUseCase(ConversationMessageRepository conversationMessageRepository, @Qualifier("debouncer") RestClient debouncerClient) {
+        this.conversationMessageRepository = conversationMessageRepository;
+        this.debouncerClient = debouncerClient;
+    }
 
     public void handleFinalMessageUseCase(SentTelegramMessageDTO debouncerBody, Boolean paused) {
 
@@ -31,7 +36,7 @@ public class HandleFinalMessageUseCase {
 
     public void saveMessageInContext(SentTelegramMessageDTO debouncerBody) {
         ConversationMessage conversationMessage = ConversationMessage.builder()
-                .chatID(debouncerBody.chatID())
+                .chatID(debouncerBody.conversationID())
                 .message(debouncerBody.message())
                 .fromUser(true)
                 .messageTimestamp(LocalDateTime.now())
@@ -41,6 +46,7 @@ public class HandleFinalMessageUseCase {
     }
 
     public void sendToDebouncer(SentTelegramMessageDTO debouncerBody) {
+
         String debouncerUri = "/debounceMessage";
 
         String result = debouncerClient.post()
@@ -48,6 +54,7 @@ public class HandleFinalMessageUseCase {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(debouncerBody)
                 .retrieve()
-                .toString();
+                .body(String.class);
+
     }
 }
