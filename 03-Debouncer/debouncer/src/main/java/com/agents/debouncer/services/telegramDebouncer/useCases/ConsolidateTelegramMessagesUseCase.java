@@ -1,9 +1,9 @@
-package com.agents.debouncer.services.messagesDebouncer.useCases;
+package com.agents.debouncer.services.telegramDebouncer.useCases;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConsolidateMessagesUseCase {
+public class ConsolidateTelegramMessagesUseCase {
 
     public String consolidateMessagesUseCase(String oldMessage, String message) {
         System.out.println("CONSOLIDANDO AS MENSAGENS | m1: " + oldMessage + " | m2:" + message);
