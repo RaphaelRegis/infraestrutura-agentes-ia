@@ -29,7 +29,7 @@ public class TelegramHTTPConfig {
     @Qualifier("debouncer")
     public RestClient debouncerClient() {
         return RestClient.builder()
-                .baseUrl("https://localhost:8080/api/v1")
+                .baseUrl("http://localhost:8081/api/v1/telegram")
                 .build();
     }
 
