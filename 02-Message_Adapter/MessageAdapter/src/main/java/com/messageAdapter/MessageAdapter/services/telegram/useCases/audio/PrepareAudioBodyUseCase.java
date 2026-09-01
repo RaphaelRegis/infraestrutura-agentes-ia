@@ -7,14 +7,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class PrepareAudioBodyUseCase {
 
-    public SentTelegramMessageDTO prepareAudioBodyUseCase(ReceivedTelegramAudioMessageDTO audioMessageDTO, String transcribedMessage, String messageApp) {
+    public SentTelegramMessageDTO prepareAudioBodyUseCase(ReceivedTelegramAudioMessageDTO audioMessageDTO, String transcribedMessage) {
         return new SentTelegramMessageDTO(
                 audioMessageDTO.agentID(),
-                audioMessageDTO.chatID(),
                 audioMessageDTO.contactName(),
+                audioMessageDTO.chatID(),
                 transcribedMessage,
-                audioMessageDTO.debounceSeconds(),
-                messageApp
+                audioMessageDTO.debounceSeconds()
         );
     }
 }

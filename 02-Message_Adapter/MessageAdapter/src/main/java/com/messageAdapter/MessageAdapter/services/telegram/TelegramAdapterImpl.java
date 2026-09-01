@@ -29,12 +29,11 @@ public class TelegramAdapterImpl implements TelegramAdapter{
     private PrepareImageBodyUseCase prepareImageBodyUseCase;
     private TranscribeImageUseCase transcribeImageUseCase;
     private HandleFinalMessageUseCase handleFinalMessageUseCase;
-    private final String messageApp = "TELEGRAM";
 
     @Override
     public void adaptTextMessage(ReceivedTelegramTextMessageDTO textMessageDTO) {
 
-        SentTelegramMessageDTO debouncerBody = prepareTextBodyUseCase.prepareTextBodyUseCase(textMessageDTO, this.messageApp);
+        SentTelegramMessageDTO debouncerBody = prepareTextBodyUseCase.prepareTextBodyUseCase(textMessageDTO);
         handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, textMessageDTO.isPaused());
 
     }
@@ -46,7 +45,7 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         byte[] audioFile = downloadAudioUseCase.downloadAudioUseCase(audioMessageDTO.botToken(), filePath);
         byte[] mp3AudioFile = convertAudioToMp3UseCase.convertAudioToMp3UseCase(audioFile);
         String transcribedAudio = transcribeAudioUseCase.transcribeAudioUseCase(mp3AudioFile);
-        SentTelegramMessageDTO debouncerBody = prepareAudioBodyUseCase.prepareAudioBodyUseCase(audioMessageDTO, transcribedAudio, messageApp);
+        SentTelegramMessageDTO debouncerBody = prepareAudioBodyUseCase.prepareAudioBodyUseCase(audioMessageDTO, transcribedAudio);
         handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, audioMessageDTO.isPaused());
 
     }
@@ -57,7 +56,7 @@ public class TelegramAdapterImpl implements TelegramAdapter{
         String filePath = getImageLinkUseCase.getImageLinkUseCase(imageMessageDTO.fileID(), imageMessageDTO.botToken());
         byte[] imageBytes = downloadImageUseCase.downloadImageUseCase(imageMessageDTO.botToken(), filePath);
         String transcribedImage = transcribeImageUseCase.transcribeImageUseCase(imageBytes, imageMessageDTO.imageCaption());
-        SentTelegramMessageDTO debouncerBody =  prepareImageBodyUseCase.prepareImageBodyUseCase(imageMessageDTO, transcribedImage, messageApp);
+        SentTelegramMessageDTO debouncerBody =  prepareImageBodyUseCase.prepareImageBodyUseCase(imageMessageDTO, transcribedImage);
         handleFinalMessageUseCase.handleFinalMessageUseCase(debouncerBody, imageMessageDTO.isPaused());
 
     }

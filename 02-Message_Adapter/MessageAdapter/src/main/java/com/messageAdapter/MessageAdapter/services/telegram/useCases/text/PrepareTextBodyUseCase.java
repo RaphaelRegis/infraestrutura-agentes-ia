@@ -7,15 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class PrepareTextBodyUseCase {
 
-    public SentTelegramMessageDTO prepareTextBodyUseCase(ReceivedTelegramTextMessageDTO textMessageDTO, String messageApp) {
+    public SentTelegramMessageDTO prepareTextBodyUseCase(ReceivedTelegramTextMessageDTO textMessageDTO) {
 
         return new SentTelegramMessageDTO(
                 textMessageDTO.agentID(),
-                textMessageDTO.chatID(),
                 textMessageDTO.contactName(),
+                textMessageDTO.chatID(),
                 textMessageDTO.message(),
-                textMessageDTO.debounceSeconds(),
-                messageApp
+                textMessageDTO.debounceSeconds()
         );
     }
 
