@@ -1,10 +1,10 @@
-package com.agents.debouncer.dto;
+package com.agents.debouncer.dto.telegram;
 
-public record ReceivedMessageDTO(
+public record ReceivedTelegramMessageDTO(
         String agentID,
-        String contactNumber,
         String contactName,
         String conversationID,
         String message,
         Integer debounceSeconds
-) {}
+) {
+}

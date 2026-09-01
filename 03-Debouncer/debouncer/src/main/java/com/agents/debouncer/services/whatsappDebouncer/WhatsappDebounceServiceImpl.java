@@ -1,8 +1,8 @@
-package com.agents.debouncer.services.messagesDebouncer;
+package com.agents.debouncer.services.whatsappDebouncer;
 
-import com.agents.debouncer.dto.ReceivedMessageDTO;
-import com.agents.debouncer.dto.SendingMessageDTO;
-import com.agents.debouncer.services.messagesDebouncer.useCases.*;
+import com.agents.debouncer.dto.whatsapp.ReceivedWhatsappMessageDTO;
+import com.agents.debouncer.dto.whatsapp.SendingWhatsappMessageDTO;
+import com.agents.debouncer.services.whatsappDebouncer.useCases.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -11,17 +11,17 @@ import java.time.Duration;
 
 @Service
 @AllArgsConstructor
-public class DebounceServiceImpl implements DebouncerService{
+public class WhatsappDebounceServiceImpl implements WhatsappDebouncerService {
 
-    private final GetKeyIdUseCase getKeyIdUseCase;
-    private final SearchRedisMessageUseCase searchRedisMessageUseCase;
-    private final ConsolidateMessagesUseCase consolidateMessagesUseCase;
-    private final SaveRedisMessageUseCase saveRedisMessageUseCase;
-    private final DeleteRedisMessageUseCase deleteRedisMessageUseCase;
-    private final SendMessageToAIUseCase sendMessageToAIUseCase;
+    private final GetWhatsappKeyIdUseCase getKeyIdUseCase;
+    private final SearchRedisWhatsappMessageUseCase searchRedisMessageUseCase;
+    private final ConsolidateWhatsappMessagesUseCase consolidateMessagesUseCase;
+    private final SaveRedisWhatsappMessageUseCase saveRedisMessageUseCase;
+    private final DeleteRedisWhatsappMessageUseCase deleteRedisMessageUseCase;
+    private final SendWhatsappMessageToAIUseCase sendMessageToAIUseCase;
 
     @Override
-    public Mono<Void> debounceMessages(ReceivedMessageDTO messageDTO) {
+    public Mono<Void> debounceMessages(ReceivedWhatsappMessageDTO messageDTO) {
 
         String keyId = getKeyIdUseCase.getKeyIdUseCase(messageDTO.conversationID());
 
@@ -33,7 +33,7 @@ public class DebounceServiceImpl implements DebouncerService{
                                 .then(Mono.defer(() -> searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)))
                                 .flatMap(fullMessage -> {
                                     if (fullMessage.equals(consolidatedMessage)) {
-                                        SendingMessageDTO sendingMessageDTO = new SendingMessageDTO(
+                                        SendingWhatsappMessageDTO sendingMessageDTO = new SendingWhatsappMessageDTO(
                                                 messageDTO.agentID(),
                                                 messageDTO.contactNumber(),
                                                 messageDTO.contactName(),
@@ -52,4 +52,9 @@ public class DebounceServiceImpl implements DebouncerService{
                 .then();
 
     }
+
+
+
+
+
 }
