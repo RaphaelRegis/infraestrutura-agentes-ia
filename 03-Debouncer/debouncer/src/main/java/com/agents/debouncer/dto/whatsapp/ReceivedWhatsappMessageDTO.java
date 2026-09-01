@@ -1,6 +1,6 @@
-package com.agents.debouncer.dto;
+package com.agents.debouncer.dto.whatsapp;
 
-public record ReceivedMessageDTO(
+public record ReceivedWhatsappMessageDTO(
         String agentID,
         String contactNumber,
         String contactName,
