@@ -1,3 +1,6 @@
 spring:
   application:
     name: AISpringBootModel
+
+server:
+  port: 8082
