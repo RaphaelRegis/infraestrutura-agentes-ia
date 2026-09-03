@@ -1,6 +1,6 @@
 package com.AISpringBootModel.AISpringBootModel.services.telegram;
 
-import com.AISpringBootModel.AISpringBootModel.services.common.useCases.AnswerWithAIUsecase;
+import com.AISpringBootModel.AISpringBootModel.services.telegram.useCases.AnswerWithTelegramAIUsecase;
 import com.AISpringBootModel.AISpringBootModel.services.common.useCases.SaveResultsUsecase;
 import com.AISpringBootModel.AISpringBootModel.services.common.useCases.SendToQueueUsecase;
 import com.AISpringBootModel.AISpringBootModel.services.telegram.useCases.GetTelegramAIDataUsecase;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class AITelegramImpl implements AITelegram {
 
     private GetTelegramAIDataUsecase getTelegramAIDataUsecase;
-    private AnswerWithAIUsecase answerWithAIUsecase;
+    private AnswerWithTelegramAIUsecase answerWithAIUsecase;
     private SaveResultsUsecase saveResultsUsecase;
     private SendToQueueUsecase sendToQueueUsecase;
 
@@ -23,7 +23,7 @@ public class AITelegramImpl implements AITelegram {
         String AIData = getTelegramAIDataUsecase.getTelegramAIDataUsecase();
 
         // manda a IA processar a request
-        String AIAnswer = answerWithAIUsecase.answerWitAIUsecase();
+        String AIAnswer = answerWithAIUsecase.answerWitAIUsecase("","");
 
         // salva todos os resultados no database
         saveResultsUsecase.saveResultsUsecase();
