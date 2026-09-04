@@ -1,5 +1,6 @@
 package com.AISpringBootModel.AISpringBootModel.services.telegram;
 
+import com.AISpringBootModel.AISpringBootModel.dto.telegram.AITelegramDataDTO;
 import com.AISpringBootModel.AISpringBootModel.services.telegram.useCases.AnswerWithTelegramAIUsecase;
 import com.AISpringBootModel.AISpringBootModel.services.common.useCases.SaveResultsUsecase;
 import com.AISpringBootModel.AISpringBootModel.services.common.useCases.SendToQueueUsecase;
@@ -20,10 +21,10 @@ public class AITelegramImpl implements AITelegram {
     public void answer() {
 
         // pega todos os dados do agente relacionados a IA (prompt, janela de contexto e RAG)
-        String AIData = getTelegramAIDataUsecase.getTelegramAIDataUsecase();
+        AITelegramDataDTO aiTelegramDataDTO = getTelegramAIDataUsecase.getTelegramAIDataUsecase();
 
         // manda a IA processar a request
-        String AIAnswer = answerWithAIUsecase.answerWitAIUsecase("","");
+        String AIAnswer = answerWithAIUsecase.answerWitAIUsecase(aiTelegramDataDTO, "");
 
         // salva todos os resultados no database
         saveResultsUsecase.saveResultsUsecase();
