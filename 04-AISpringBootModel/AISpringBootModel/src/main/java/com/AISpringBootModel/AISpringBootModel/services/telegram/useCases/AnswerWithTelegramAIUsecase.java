@@ -1,7 +1,7 @@
 package com.AISpringBootModel.AISpringBootModel.services.telegram.useCases;
 
 import com.AISpringBootModel.AISpringBootModel.dto.telegram.AITelegramDataDTO;
-import org.apache.catalina.User;
+import com.AISpringBootModel.AISpringBootModel.services.telegram.AITools.AgentTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
@@ -15,9 +15,11 @@ import java.util.List;
 public class AnswerWithTelegramAIUsecase {
 
     private final ChatClient chatClient;
+    private final AgentTools agentTools;
 
-    public AnswerWithTelegramAIUsecase(@Qualifier("telegramAI") ChatClient chatClient) {
+    public AnswerWithTelegramAIUsecase(@Qualifier("telegramAI") ChatClient chatClient, AgentTools agentTools) {
         this.chatClient = chatClient;
+        this.agentTools = agentTools;
     }
 
     public String answerWitAIUsecase(AITelegramDataDTO aiTelegramDataDTO, String newMessage) {
@@ -28,11 +30,9 @@ public class AnswerWithTelegramAIUsecase {
 
         return chatClient
                 .prompt(prompt)
+                .tools(agentTools)
                 .call()
                 .content();
-
     }
-
-
 
 }
