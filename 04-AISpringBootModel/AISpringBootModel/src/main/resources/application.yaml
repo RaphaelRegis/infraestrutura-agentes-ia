@@ -1,6 +1,12 @@
 spring:
   application:
     name: AISpringBootModel
+  ai:
+    openai:
+      api-key: "place-holder"
+      chat:
+        options:
+          model: gpt-4o-mini
 
 server:
   port: 8082
