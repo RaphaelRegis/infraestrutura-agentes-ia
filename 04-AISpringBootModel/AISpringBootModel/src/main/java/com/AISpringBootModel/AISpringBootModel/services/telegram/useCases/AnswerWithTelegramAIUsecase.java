@@ -28,7 +28,7 @@ public class AnswerWithTelegramAIUsecase {
 
         return chatClient
                 .prompt(prompt)
-                .tools(agentTools)
+                .toolContext(Map.of("messageID", ""))
                 .call()
                 .content();
     }
