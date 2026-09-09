@@ -1,0 +1,306 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="pObGA4vjwNOEZNsLafa9">
+    <mxGraphModel dx="1634" dy="2781" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-90" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;" value="" vertex="1">
+          <mxGeometry height="2492" width="2000" x="-750" y="-1100" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-103" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" value="" vertex="1">
+          <mxGeometry height="120" width="459.07" x="-509.07" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-100" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" value="" vertex="1">
+          <mxGeometry height="170" width="947" x="-537" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-98" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" value="" vertex="1">
+          <mxGeometry height="422" width="1140" x="-537" y="-72" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-95" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" value="" vertex="1">
+          <mxGeometry height="308" width="493" x="-535" y="-448" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-91" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" value="" vertex="1">
+          <mxGeometry height="150" width="821" x="-535" y="-840" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-6" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-1" parent="1" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;aspect=fixed;" value="A mensagem chega via API" vertex="1">
+          <mxGeometry height="80" width="80" x="-576" y="-818" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-3" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-610" y="-968" />
+              <mxPoint x="-610" y="-778" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-2" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="Usuário" vertex="1">
+          <mxGeometry height="60" width="30" x="-550" y="-998" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Envia mensagem" vertex="1">
+          <mxGeometry height="30" width="60" x="-565" y="-888" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-8" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-5" parent="1" style="whiteSpace=wrap;html=1;" value="Determina o sistema de mensagens" vertex="1">
+          <mxGeometry height="60" width="120" x="-450" y="-808" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-10" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-7" parent="1" style="whiteSpace=wrap;html=1;" value="Determina qual o agente" vertex="1">
+          <mxGeometry height="60" width="120" x="-276" y="-808" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-12" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-9" parent="1" style="whiteSpace=wrap;html=1;" value="Normaliza a conversa" vertex="1">
+          <mxGeometry height="60" width="120" x="-102" y="-808" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-14" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-11" parent="1" style="whiteSpace=wrap;html=1;" value="Normaliza a mensagem e sua situação" vertex="1">
+          <mxGeometry height="60" width="120" x="72" y="-808" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-13" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="Envia mensagem para adapter" vertex="1">
+          <mxGeometry height="80" width="80" x="246" y="-818" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-19" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-630" y="-518" />
+              <mxPoint x="-630" y="-318" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-15" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="Função Lambda" vertex="1">
+          <mxGeometry height="60" width="30" x="-550" y="-548" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-21" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-16" parent="1" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;aspect=fixed;" value="A mensagem chega via API" vertex="1">
+          <mxGeometry height="80" width="80" x="-576" y="-358" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-25" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-24" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-20" parent="1" style="whiteSpace=wrap;html=1;" value="Transforma a mensagem em texto caso necessário" vertex="1">
+          <mxGeometry height="60" width="120" x="-436" y="-348" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-31" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-30">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-216" y="-390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-33" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-32" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-216" y="-230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-24" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="Conversa pausada?" vertex="1">
+          <mxGeometry height="80" width="80" x="-256" y="-358" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-30" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="Salva no contexto" vertex="1">
+          <mxGeometry height="80" width="80" x="-82" y="-428" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-32" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="Envia para debouncer" vertex="1">
+          <mxGeometry height="80" width="80" x="-82" y="-270" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="S" vertex="1">
+          <mxGeometry height="30" width="60" x="-150" y="-388" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-35" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="N" vertex="1">
+          <mxGeometry height="30" width="60" x="-142" y="-260" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-37" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-700" y="-58" />
+              <mxPoint x="-700" y="142" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-38" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="Message Adapter" vertex="1">
+          <mxGeometry height="60" width="30" x="-650" y="-88" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-41" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-40" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-39" parent="1" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;aspect=fixed;" value="A mensagem chega via API" vertex="1">
+          <mxGeometry height="80" width="80" x="-576" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-47" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-46" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-40" parent="1" style="whiteSpace=wrap;html=1;" value="Define uma chave para a conversa" vertex="1">
+          <mxGeometry height="60" width="120" x="-436" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-49" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-48" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-51" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-50" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-46" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="Já existe no cache?" vertex="1">
+          <mxGeometry height="80" width="80" x="-216" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-55" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-48" parent="1" style="whiteSpace=wrap;html=1;" value="Incrementa a mensagem e atualiza o cache" vertex="1">
+          <mxGeometry height="60" width="120" x="-236" y="-48" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-56" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-50" parent="1" style="whiteSpace=wrap;html=1;" value="Salva a mensagem no cache" vertex="1">
+          <mxGeometry height="60" width="120" x="-236" y="272" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="S" vertex="1">
+          <mxGeometry height="30" width="60" x="-236" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="N" vertex="1">
+          <mxGeometry height="30" width="60" x="-236" y="242" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-58" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-57" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-54" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="-65" y="127" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-60" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-59" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-57" parent="1" style="whiteSpace=wrap;html=1;" value="Aguarda o tempo de debounce" vertex="1">
+          <mxGeometry height="60" width="120" x="7" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-64" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-63" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280.05999999999995" y="302" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-66" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-65" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280.05999999999995" y="-18" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-59" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="A mensagem no cache continua igual?" vertex="1">
+          <mxGeometry height="120" width="120" x="220" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-61" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="Envia para a IA" vertex="1">
+          <mxGeometry height="80" width="80" x="560" y="-58" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-63" parent="1" style="whiteSpace=wrap;html=1;" value="Termina a execução" vertex="1">
+          <mxGeometry height="60" width="120" x="350" y="272" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-67" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-65" parent="1" style="whiteSpace=wrap;html=1;" value="Limpa o cache" vertex="1">
+          <mxGeometry height="60" width="120" x="350" y="-48" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-68" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-70">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-630" y="572" />
+              <mxPoint x="-630" y="772" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-69" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="Debouncer" vertex="1">
+          <mxGeometry height="60" width="30" x="-550" y="542" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-72" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-71" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-70" parent="1" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;aspect=fixed;" value="A mensagem chega via API" vertex="1">
+          <mxGeometry height="80" width="80" x="-576" y="732" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-74" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-71" parent="1" style="whiteSpace=wrap;html=1;" value="Busca os dados do agente (prompt, contexto, etc.)" vertex="1">
+          <mxGeometry height="60" width="120" x="-436" y="742" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-76" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-75" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-73" parent="1" style="whiteSpace=wrap;html=1;" value="IA processa a mensagem" vertex="1">
+          <mxGeometry height="60" width="120" x="-236" y="742" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-88" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-87" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-75" parent="1" style="whiteSpace=wrap;html=1;" value="Registro das tools e mensagem do cliente são salvos no database" vertex="1">
+          <mxGeometry height="60" width="120" x="-36" y="742" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-77" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="Resposta(s) enviada(s) ao RabbitMQ" vertex="1">
+          <mxGeometry height="80" width="80" x="370" y="732" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-80" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-82">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-603.0699999999999" y="1062" />
+              <mxPoint x="-603.0699999999999" y="1262" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-81" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="Mensagem na fila RabbitMQ" vertex="1">
+          <mxGeometry height="60" width="30" x="-523.0699999999999" y="1032" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-84" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-83" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-82" parent="1" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;aspect=fixed;" value="A mensagem chega via evento" vertex="1">
+          <mxGeometry height="80" width="80" x="-549.0699999999999" y="1222" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-86" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-85" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-83" parent="1" style="whiteSpace=wrap;html=1;" value="Prepara lista com todas as mensagens" vertex="1">
+          <mxGeometry height="60" width="120" x="-409.07" y="1232" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-85" parent="1" style="whiteSpace=wrap;html=1;" value="Envia as mensagens com cooldown breve (1 a 3 segundos)" vertex="1">
+          <mxGeometry height="60" width="120" x="-209.06999999999994" y="1232" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-89" edge="1" parent="1" source="HhjtkQ-HEIg7WGbWzvYN-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HhjtkQ-HEIg7WGbWzvYN-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-87" parent="1" style="whiteSpace=wrap;html=1;" value="Quebra resposta de acordo quebras de linha" vertex="1">
+          <mxGeometry height="60" width="120" x="164" y="742" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-92" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=48;" value="AGENTES DE IA" vertex="1">
+          <mxGeometry height="130" width="426" x="-750" y="-1230" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-94" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;01 - Função Lambda&lt;/h1&gt;&lt;p&gt;Recebe a mensagem e faz a triagem.&lt;/p&gt;&lt;p&gt;Normaliza o corpo da mensagem de acordo com a origem da mensagem (podem ser diferentes aplicações — WhatsApp, Telegram — ou mecanismos, como a Uazapi).&lt;/p&gt;&lt;p&gt;Normaliza também a situação da conversa, criando-a caso não exista e verificando se está pausada.&lt;/p&gt;&lt;p&gt;Por fim, envia o resultado final para o MESSAGE ADAPTER.&lt;/p&gt;" vertex="1">
+          <mxGeometry height="260" width="340" x="360" y="-838" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-96" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;02 - Message Adapter&lt;br&gt;&lt;/h1&gt;&lt;div&gt;Recebe mensagens e transforma mensagens de áudio e imagem em texto.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Caso a conversa esteja pausada, ele apenas salva a mensagem no banco de dados. Caso contrário, ele manda a mensagem para o DEBOUNCER.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="340" x="40" y="-450" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-97" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;03 - Debouncer&lt;br&gt;&lt;/h1&gt;&lt;div&gt;Transforma mensagens de uma mesma conversa que chegam muito rapidamente numa mensagem só para a IA processar.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Com a mensagem pronta, ele manda a mensagem para a IA.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="340" x="700" y="-48" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-101" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;04 - IA&lt;br&gt;&lt;/h1&gt;&lt;div&gt;Processa a mensagem do cliente e prepara uma resposta.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Utiliza diversas tools que acumulam suas chamadas num cache para que possam ser registradas num banco de dados.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Também faz a quebra das mensagens e prepara mensagens de follow-up caso necessário.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Por fim, joga as mensagens no RabbitMQ nas respectivas filas.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="340" x="500" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="HhjtkQ-HEIg7WGbWzvYN-102" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;05 - Disparador de mensagens&lt;br&gt;&lt;/h1&gt;&lt;div&gt;Envia as mensagens de acordo com o aplicativo/mecanismo de mensagens.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Não é usado só aqui, mas descreveremos apenas a regra plausível nesse caso (respostas da IA).&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Ele detecta o evento no RabbitMQ que contém as mensagens a serem enviadas e então as envia com um intervalo de 2 a 4 segundos entre elas.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="370" x="-20" y="1060" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
