@@ -1,0 +1,377 @@
+{
+  "name": "AIMessageReceiver",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "n8n/client_ai",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -208,
+        64
+      ],
+      "id": "67dd8990-0b1f-4132-9b22-c41e328bf723",
+      "name": "Webhook",
+      "webhookId": "8110c9d1-87ad-40ea-b79b-45399503e165"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "eULwptpNwCfG6LQu",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/eULwptpNwCfG6LQu",
+          "cachedResultName": "GetAIData"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "agent_id": "={{ $json.body.agentID }}"
+          },
+          "matchingColumns": [
+            "agent_id"
+          ],
+          "schema": [
+            {
+              "id": "agent_id",
+              "displayName": "agent_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        32,
+        64
+      ],
+      "id": "17fd17cb-ca8b-4ae8-ba19-7ee3a19c960b",
+      "name": "GetAIData"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DivouVBy7nj22Lcm",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/DivouVBy7nj22Lcm",
+          "cachedResultName": "SaveToolResults"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "usedTools": "={{ $json.tools }}",
+            "messageID": "={{ $('GetGeneratedAIMessage').item.json.id }}"
+          },
+          "matchingColumns": [
+            "usedTools"
+          ],
+          "schema": [
+            {
+              "id": "usedTools",
+              "displayName": "usedTools",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "array",
+              "removed": false
+            },
+            {
+              "id": "messageID",
+              "displayName": "messageID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1088,
+        64
+      ],
+      "id": "8bdbd964-a24b-4b95-a657-5a94c6cf5f26",
+      "name": "SaveToolResults"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Rl2oZYBDTMAg99OV",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/Rl2oZYBDTMAg99OV",
+          "cachedResultName": "SendToQueue"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1680,
+        64
+      ],
+      "id": "363b06c7-bb08-4a97-8be8-3882dde1fc71",
+      "name": "SendToQueue",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "SJZmeZTnZNKWhXe0",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/SJZmeZTnZNKWhXe0",
+          "cachedResultName": "PrepareQueueBody"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1440,
+        64
+      ],
+      "id": "4e9aa703-c3ff-404a-9d4a-9f4837b7a8bd",
+      "name": "PrepareQueueBody",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "22ebcbfd-aad3-4f7a-b25f-1049fe353cf7",
+              "name": "tools",
+              "value": "={{ $('CallAI').item.json.intermediateSteps.map(step => {\n  return {\n    toolName: step.action.tool,\n    input: Object.keys(step.action.toolInput || {}).length ? step.action.toolInput : step.action.log,\n    output: JSON.parse(step.observation),\n    logic: step.action.log\n  };\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        896,
+        64
+      ],
+      "id": "6a1f06b7-62c4-4114-aaee-42e6b8b586d8",
+      "name": "GetToolsUsed"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $('GetAIData').item.json.agent_workflow_id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        464,
+        64
+      ],
+      "id": "726234e3-ed3a-44f0-b102-fa97950ec29b",
+      "name": "CallAI"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9749439-649f-466a-9099-706d9a90b4a8",
+              "name": "userMessage",
+              "value": "={{ $('Webhook').item.json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "d92f6624-2801-4dbf-8eb8-f28fb92d6edc",
+              "name": "systemMessage",
+              "value": "={{ $json.ai_prompt }}",
+              "type": "string"
+            },
+            {
+              "id": "d7a6a8a5-677f-4cff-9fbc-8dac24a09946",
+              "name": "conversationID",
+              "value": "={{ $('Webhook').item.json.body.conversationID }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        256,
+        64
+      ],
+      "id": "0a917d96-7798-4071-9560-0a72ed9887fc",
+      "name": "SetAIFields"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, message\nFROM conversation_messages\nWHERE session_id = '{{ $('Webhook').item.json.body.conversationID }}'\n  AND message->>'type' = 'ai'\n  AND message->>'content' = '{{ $json.output }}'\nORDER BY id DESC\nLIMIT 1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.7,
+      "position": [
+        688,
+        64
+      ],
+      "id": "0920948d-e043-41f7-be7f-27beb07d7f6f",
+      "name": "GetGeneratedAIMessage",
+      "credentials": {
+        "postgres": {
+          "id": "CBLrtTGxTY9XXeJy",
+          "name": "AI Agents Database"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "SendToQueue": [
+      {
+        "json": {
+          "output": "Os protagonistas de GTA 6 são **Lucia Caminos** e **Jason Duval**. Eles formam uma dupla criminosa que protagoniza a história ambientada no estado fictício de Leonida."
+        }
+      }
+    ],
+    "PrepareQueueBody": [
+      {
+        "json": {
+          "output": "Os protagonistas de GTA 6 são **Lucia Caminos** e **Jason Duval**. Eles formam uma dupla criminosa que protagoniza a história ambientada no estado fictício de Leonida."
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "GetAIData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetAIData": {
+      "main": [
+        [
+          {
+            "node": "SetAIFields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetToolsUsed": {
+      "main": [
+        [
+          {
+            "node": "SaveToolResults",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CallAI": {
+      "main": [
+        [
+          {
+            "node": "GetGeneratedAIMessage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SetAIFields": {
+      "main": [
+        [
+          {
+            "node": "CallAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetGeneratedAIMessage": {
+      "main": [
+        [
+          {
+            "node": "GetToolsUsed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "9c337cc8-86ee-4530-a027-a42e050554b3",
+  "meta": {
+    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+  },
+  "nodeGroups": [],
+  "id": "3Xj8U1VCAlPy6x2S",
+  "tags": []
+}

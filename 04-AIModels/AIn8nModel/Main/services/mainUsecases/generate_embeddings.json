@@ -1,0 +1,231 @@
+{
+  "name": "generate_embeddings",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {
+          "queryName": "match_documents"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        -32
+      ],
+      "id": "389d66cc-bf70-4682-afc2-cf68fcfe9358",
+      "name": "Supabase Vector Store",
+      "credentials": {
+        "supabaseApi": {
+          "id": "uPdNZNGXsRiy3svg",
+          "name": "AI Agents Database Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        144,
+        208
+      ],
+      "id": "e8047aea-1362-4083-83d3-e09d754a7384",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "ai_agents",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -448,
+        -32
+      ],
+      "id": "3f5edf63-3156-4157-a507-9bbea568babb",
+      "name": "Get a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "uPdNZNGXsRiy3svg",
+          "name": "AI Agents Database Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        -32
+      ],
+      "id": "68561462-105b-4640-8c6c-465f88522533",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        208
+      ],
+      "id": "5515e130-623a-49c3-ae7c-d8681f663a39",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6JD8eCeAcCcthRs9",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "af25fcc6-4788-4592-baa8-f9c6d0d52f1f",
+              "name": "ai_rag",
+              "value": "={{ $json.ai_rag }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -224,
+        -32
+      ],
+      "id": "a4cd9335-f0ef-4a70-b8be-e52a44f713c0",
+      "name": "select_rag"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Get a row": [
+      {
+        "json": {
+          "id": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+          "created_at": "2026-09-10T19:30:02.369022+00:00",
+          "agent_name": "AgenteExemploGTA6",
+          "message_app": "Telegram",
+          "ai_prompt": "Você é um agente capaz de dizer informações sobre o jogo GTA 6.",
+          "ai_rag": "Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami.",
+          "notification_group_number": "1234567890"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "select_rag": [
+      {
+        "json": {
+          "ai_rag": "Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami."
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "select_rag",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "select_rag": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "ab481e06-46cd-4e6a-b11e-38087e7ab1cf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+  },
+  "nodeGroups": [],
+  "id": "r1OZajVBsCKfSML6",
+  "tags": []
+}
