@@ -1,0 +1,167 @@
+{
+  "name": "SaveToolResults",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "usedTools",
+              "type": "array"
+            },
+            {
+              "name": "messageID",
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "13d9d53e-b8d9-4050-9095-0ebda45d2c0d",
+      "name": "Input"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "usedTools",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        320,
+        0
+      ],
+      "id": "13577804-1d52-43d8-afc5-7939275ceb14",
+      "name": "SeparateTools"
+    },
+    {
+      "parameters": {
+        "tableId": "message_tools",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "tool_name",
+              "fieldValue": "={{ $json.toolName }}"
+            },
+            {
+              "fieldId": "tool_input",
+              "fieldValue": "={{ $json.input }}"
+            },
+            {
+              "fieldId": "tool_output",
+              "fieldValue": "={{ $json.output }}"
+            },
+            {
+              "fieldId": "tool_logic",
+              "fieldValue": "={{ $json.logic }}"
+            },
+            {
+              "fieldId": "message_id",
+              "fieldValue": "={{ $('Input').item.json.messageID }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        560,
+        0
+      ],
+      "id": "dea0cf2e-5af2-48ac-b716-cd26b7927361",
+      "name": "SaveAllTools",
+      "credentials": {
+        "supabaseApi": {
+          "id": "uPdNZNGXsRiy3svg",
+          "name": "AI Agents Database Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        928,
+        192
+      ],
+      "id": "07ad9883-a752-4e6d-a0fc-f639d80b7fee",
+      "name": "Split Out"
+    }
+  ],
+  "pinData": {
+    "Input": [
+      {
+        "json": {
+          "usedTools": [
+            {
+              "toolName": "Supabase_Vector_Store",
+              "input": {
+                "input": "Quem são os protagonistas de GTA 6?"
+              },
+              "output": [
+                {
+                  "response": [
+                    {
+                      "type": "text",
+                      "text": "{\"pageContent\":\"Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami.\",\"metadata\":{\"loc\":{\"lines\":{\"to\":1,\"from\":1}},\"source\":\"blob\",\"blobType\":\"application/json\"}}"
+                    }
+                  ]
+                }
+              ],
+              "logic": "Calling Supabase Vector Store"
+            }
+          ],
+          "messageID": 8
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Input": {
+      "main": [
+        [
+          {
+            "node": "SeparateTools",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SeparateTools": {
+      "main": [
+        [
+          {
+            "node": "SaveAllTools",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "ef9825a0-9fb5-4f7c-b69c-70a8a41b2cd5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+  },
+  "nodeGroups": [],
+  "id": "DivouVBy7nj22Lcm",
+  "tags": []
+}
