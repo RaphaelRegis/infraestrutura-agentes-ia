@@ -1,0 +1,90 @@
+{
+  "name": "CRMMessageAdapterController",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "messageAdapter/crm",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "535141bd-6b79-4588-baa2-4f82ad812fdd",
+      "name": "TranscribeCRMContent",
+      "webhookId": "2bd0af37-cfe3-4aec-82e8-9a078d15df77"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "dFIFErbdKzZwreJr",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/dFIFErbdKzZwreJr",
+          "cachedResultName": "CRMMessageAdapter"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "requestBody": "={{ $json.body }}"
+          },
+          "matchingColumns": [
+            "requestBody"
+          ],
+          "schema": [
+            {
+              "id": "requestBody",
+              "displayName": "requestBody",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        0
+      ],
+      "id": "b29b55b9-d299-44c2-81c3-51c7ad0cb0ab",
+      "name": "adaptMessage"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "TranscribeCRMContent": {
+      "main": [
+        [
+          {
+            "node": "adaptMessage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "3e9071df-8bb6-4722-be0b-7c1124a3bc9a",
+  "meta": {
+    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+  },
+  "nodeGroups": [],
+  "id": "OvcRcLQ1Iyr1zoNQ",
+  "tags": []
+}
