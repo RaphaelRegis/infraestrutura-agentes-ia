@@ -3,22 +3,6 @@
   "nodes": [
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "n8n/client_ai",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        -208,
-        64
-      ],
-      "id": "67dd8990-0b1f-4132-9b22-c41e328bf723",
-      "name": "Webhook",
-      "webhookId": "8110c9d1-87ad-40ea-b79b-45399503e165"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "eULwptpNwCfG6LQu",
@@ -276,6 +260,19 @@
           "name": "AI Agents Database"
         }
       }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -208,
+        64
+      ],
+      "id": "c3338ef1-1937-4c16-a562-60c914c855da",
+      "name": "Input"
     }
   ],
   "pinData": {
@@ -295,17 +292,6 @@
     ]
   },
   "connections": {
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "GetAIData",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "GetAIData": {
       "main": [
         [
@@ -360,6 +346,17 @@
           }
         ]
       ]
+    },
+    "Input": {
+      "main": [
+        [
+          {
+            "node": "GetAIData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -367,7 +364,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "9c337cc8-86ee-4530-a027-a42e050554b3",
+  "versionId": "16fb68a7-aed6-4a66-9584-073251585275",
   "meta": {
     "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
   },

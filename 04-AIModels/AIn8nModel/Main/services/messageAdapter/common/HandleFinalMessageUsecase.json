@@ -1,0 +1,30 @@
+{
+  "name": "HandleFinalMessageUsecase",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "34a001f8-f8f1-40f4-827e-05bd6aaedeee",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "a3b4505b-8045-4177-bf71-d2af3a8e0e93",
+  "meta": {
+    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+  },
+  "nodeGroups": [],
+  "id": "xYSEvPO9ya4RJm5w",
+  "tags": []
+}

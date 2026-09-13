@@ -1,0 +1,32 @@
+{
+  "name": "TranscribeCRMImageUsecase",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b84db02c-3459-4083-80b2-536c6510978b",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "87b90fa7-44e7-4dfe-bcb7-a54b21ed2cd5",
+  "meta": {
+    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+  },
+  "nodeGroups": [],
+  "id": "TUgKmuGsvx2bC5dm",
+  "tags": []
+}
