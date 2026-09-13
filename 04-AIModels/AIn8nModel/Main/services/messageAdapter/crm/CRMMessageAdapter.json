@@ -1,0 +1,290 @@
+{
+  "name": "CRMMessageAdapter",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "requestBody",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5a212e8f-2304-4c94-8cc1-467975e62e7b",
+      "name": "Input"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.requestBody.messageType }}",
+                    "rightValue": "TEXT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "2b94106c-2d39-4656-adcb-a614f43ac3d2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b34ba4b3-3667-47ae-8797-08427696cf75",
+                    "leftValue": "={{ $json.requestBody.messageType }}",
+                    "rightValue": "IMAGE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGE"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4192e6bc-f06d-49d8-a5b8-eac6cd01bf6c",
+                    "leftValue": "={{ $json.requestBody.messageType }}",
+                    "rightValue": "AUDIO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "AUDIO"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        -16
+      ],
+      "id": "f4b067bb-b1a1-4907-96d9-08333247006a",
+      "name": "RouteMessageType"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "xYSEvPO9ya4RJm5w",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/xYSEvPO9ya4RJm5w",
+          "cachedResultName": "HandleFinalMessageUsecase"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1024,
+        -32
+      ],
+      "id": "5e0ad65e-ca77-404f-b301-08fd6408c6d9",
+      "name": "HandleFinalMessage"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "TUgKmuGsvx2bC5dm",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/TUgKmuGsvx2bC5dm",
+          "cachedResultName": "TranscribeCRMImageUsecase"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        608,
+        64
+      ],
+      "id": "c852182b-5971-44c6-a031-b24ff2eb6e0e",
+      "name": "TranscribeImage"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Dg5JwPgBPK7Jf8P8",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/Dg5JwPgBPK7Jf8P8",
+          "cachedResultName": "TranscribeCRMAudioUsecase"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        608,
+        240
+      ],
+      "id": "31d15005-d384-4729-a716-006eaa13080b",
+      "name": "TranscribeAudio"
+    }
+  ],
+  "pinData": {
+    "Input": [
+      {
+        "json": {
+          "requestBody": {
+            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+            "chatID": "7d8642a0-0144-47d1-92e0-50d34e4bf1c0",
+            "contactName": "maria_silva",
+            "isPaused": false,
+            "debounceSeconds": "15",
+            "message": "Oi, gostaria de saber o status do meu pedido",
+            "messageType": "TEXT"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Input": {
+      "main": [
+        [
+          {
+            "node": "RouteMessageType",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RouteMessageType": {
+      "main": [
+        [
+          {
+            "node": "HandleFinalMessage",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "TranscribeImage",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "TranscribeAudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TranscribeImage": {
+      "main": [
+        [
+          {
+            "node": "HandleFinalMessage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TranscribeAudio": {
+      "main": [
+        [
+          {
+            "node": "HandleFinalMessage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "d51a0623-9481-4c44-a1e4-4a85e3252c6c",
+  "meta": {
+    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+  },
+  "nodeGroups": [],
+  "id": "dFIFErbdKzZwreJr",
+  "tags": []
+}
