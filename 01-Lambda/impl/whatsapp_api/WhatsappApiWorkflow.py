@@ -1,4 +1,4 @@
-from impl.common.use_cases.get_database_info_usecase import get_database_info_usecase
+from impl.common.use_cases.get_database_info_usecase import get_agents_database_info_usecase
 from strategy import ProcessWorkflow
 from impl.whatsapp_api.use_cases.prepare_debounce_payload_usecase import prepare_debounce_payload
 from impl.whatsapp_api.use_cases.send_message_to_debouncer_usecase import send_message_to_debouncer
@@ -19,7 +19,7 @@ class WhatsappApiWorkflow(ProcessWorkflow.ProcessWorkflow):
     @staticmethod
     def run(event: dict) -> dict:
         message_data = get_message_data(event)
-        supabase_data = get_database_info_usecase("WHATSAPP_API")
+        supabase_data = get_agents_database_info_usecase()
         agent_data = get_agent_data_usecase(f"WHATSAPP_API_{message_data["agent_id"]}")
         ai_conversation = find_or_create_conversation_usecase(message_data["contactName"], message_data["contactNumber"], agent_data["agent_uuid"], supabase_data["url"], supabase_data["api_key"])
 
