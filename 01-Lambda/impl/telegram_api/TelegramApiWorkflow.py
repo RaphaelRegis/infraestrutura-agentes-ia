@@ -1,5 +1,5 @@
-from impl.common.use_cases.get_database_info_usecase import get_database_info_usecase
-from impl.telegram_api.use_cases.send_to_message_adapter_usecase import send_to_message_adapter_usecase
+from impl.common.use_cases.get_database_info_usecase import get_agents_database_info_usecase
+from impl.common.use_cases.send_to_message_adapter_usecase import send_to_message_adapter_usecase
 from impl.telegram_api.use_cases.get_telegram_message_data_usecase import get_telegram_message_data_usecase
 from impl.telegram_api.use_cases.prepare_telegram_message_adapter_payload_usecase import \
     prepare_telegram_message_adapter_payload_usecase
@@ -19,7 +19,7 @@ class TelegramApiWorkflow(ProcessWorkflow.ProcessWorkflow):
         message_data = get_telegram_message_data_usecase(event)
 
         # pega as informacoes do banco de dados
-        database_info = get_database_info_usecase("TELEGRAM_API")
+        database_info = get_agents_database_info_usecase()
 
         # pega os dados do agente
         # IRAH VIR DO CAMINHO DO WEBHOOK
@@ -35,6 +35,6 @@ class TelegramApiWorkflow(ProcessWorkflow.ProcessWorkflow):
         message_adapter_payload = prepare_telegram_message_adapter_payload_usecase(message_data, ai_conversation, agent_data, is_paused)
 
         # envia de maneira assincrona para o message_adapter
-        result = send_to_message_adapter_usecase(message_adapter_payload, message_data["message_type"])
+        result = send_to_message_adapter_usecase(message_adapter_payload, message_data["message_type"], "telegram")
 
         return result
