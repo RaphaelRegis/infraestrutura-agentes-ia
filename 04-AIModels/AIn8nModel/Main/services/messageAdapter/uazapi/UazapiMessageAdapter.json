@@ -36,7 +36,7 @@
                 "conditions": [
                   {
                     "leftValue": "={{ $json.requestBody.messageType }}",
-                    "rightValue": "TEXT",
+                    "rightValue": "text",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
@@ -61,7 +61,7 @@
                   {
                     "id": "b34ba4b3-3667-47ae-8797-08427696cf75",
                     "leftValue": "={{ $json.requestBody.messageType }}",
-                    "rightValue": "IMAGE",
+                    "rightValue": "image",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
@@ -85,7 +85,7 @@
                   {
                     "id": "4192e6bc-f06d-49d8-a5b8-eac6cd01bf6c",
                     "leftValue": "={{ $json.requestBody.messageType }}",
-                    "rightValue": "AUDIO",
+                    "rightValue": "audio",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
@@ -117,7 +117,7 @@
           "value": "xYSEvPO9ya4RJm5w",
           "mode": "list",
           "cachedResultUrl": "/workflow/xYSEvPO9ya4RJm5w",
-          "cachedResultName": "HandleFinalMessage"
+          "cachedResultName": "HandleFinalMessageUsecase"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -201,12 +201,15 @@
         "json": {
           "requestBody": {
             "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
-            "chatID": "7d8642a0-0144-47d1-92e0-50d34e4bf1c0",
-            "contactName": "maria_silva",
-            "isPaused": false,
+            "chatID": "81186f93-8646-4511-8f30-7fbd1890ac38",
+            "contactName": "João Silva",
+            "isPaused": true,
+            "fromAtendent": false,
             "debounceSeconds": "15",
-            "message": "Oi, gostaria de saber o status do meu pedido",
-            "messageType": "TEXT"
+            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
+            "messageType": "text",
+            "messageMechanism": "uazapi",
+            "message": "Olá, gostaria de saber o horário de atendimento."
           }
         },
         "pairedItem": {
@@ -280,7 +283,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "3c7fe885-6143-4b99-823b-eb2c7c2c4a9b",
+  "versionId": "c948d098-690a-4a14-9d3f-1ee6dc221f29",
   "meta": {
     "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
   },
