@@ -3,7 +3,7 @@ from strategy.ProcessWorkflowStrategy import ProcessWorkflowStrategy
 
 def get_correct_strategy(event) -> str:
     # TODO: adicionar implementacao real
-    return "telegram_api"
+    return "uazapi_api"
 
 def lambda_handler(event, context):
 

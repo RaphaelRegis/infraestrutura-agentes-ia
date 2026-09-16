@@ -1,4 +1,5 @@
 from impl.telegram_api import TelegramApiWorkflow
+from impl.uazapi_api import UazapiApiWorkflow
 from impl.whatsapp_api import WhatsappApiWorkflow
 
 
@@ -9,6 +10,7 @@ class ProcessWorkflowStrategy:
         self.workflows = {
             "whatsapp_api": WhatsappApiWorkflow.WhatsappApiWorkflow,
             "telegram_api": TelegramApiWorkflow.TelegramApiWorkflow,
+            "uazapi_api": UazapiApiWorkflow.UazapiApiWorkflow
         }
 
     def get_workflow(self, origin):

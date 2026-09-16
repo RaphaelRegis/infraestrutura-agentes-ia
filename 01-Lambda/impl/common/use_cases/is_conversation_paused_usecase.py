@@ -18,7 +18,7 @@ def is_conversation_paused_usecase(pause_minutes: int, paused_at: str) -> bool:
 
     elapsed_minutes = (now - updated_dt).total_seconds() / 60
 
-    if elapsed_minutes > pause_minutes:
+    if elapsed_minutes > int(pause_minutes):
         return False
 
 
