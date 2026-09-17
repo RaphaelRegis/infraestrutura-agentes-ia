@@ -1,6 +1,8 @@
 package com.agents.messageSender.services.uazapi.usecases;
 
+import com.agents.messageSender.dto.uazapi.UazapiReceivedTextMessageDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
@@ -13,11 +15,14 @@ public class SendUazapiTextMessageUsecase {
         this.uazapiClient = uazapiClient;
     }
 
-    public void sendUazapiTextMessage() {
-        // TODO: implementar metodo
+    public void sendUazapiTextMessage(UazapiReceivedTextMessageDTO dto) {
+        uazapiClient.post()
+                .header("token", dto.token())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(dto)
+                .retrieve()
+                .toBodilessEntity();
     }
-
-
-
-
 }
+
