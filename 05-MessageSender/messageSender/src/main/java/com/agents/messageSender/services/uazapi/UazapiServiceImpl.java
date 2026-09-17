@@ -16,11 +16,11 @@ public class UazapiServiceImpl implements UazapiService {
 
     @Override
     public void sendTextMessage(UazapiReceivedTextMessageDTO receivedMessageDTO) {
-        sendUazapiTextMessageUsecase.sendUazapiTextMessage();
+        sendUazapiTextMessageUsecase.sendUazapiTextMessage(receivedMessageDTO);
     }
 
     @Override
     public void sendMediaMessage(UazapiReceivedMediaMessageDTO receivedMessageDTO) {
-        sendUazapiMediaMessageUsecase.sendUazapiMediaMessageUsecase();
+        sendUazapiMediaMessageUsecase.sendUazapiMediaMessage(receivedMessageDTO);
     }
 }
