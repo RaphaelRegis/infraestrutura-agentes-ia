@@ -1,0 +1,16 @@
+{
+  "update_id": 123456790,
+  "message": {
+    "message_id": 43,
+    "from": { "id": 987654321, "is_bot": false, "first_name": "Maria" },
+    "chat": { "id": 987654321, "first_name": "Maria", "username": "maria_silva", "type": "private" },
+    "date": 1753267260,
+    "voice": {
+      "duration": 8,
+      "mime_type": "audio/ogg",
+      "file_id": "AwACAgIAAxkBAAI...",
+      "file_unique_id": "AgAD...",
+      "file_size": 24576
+    }
+  }
+}
