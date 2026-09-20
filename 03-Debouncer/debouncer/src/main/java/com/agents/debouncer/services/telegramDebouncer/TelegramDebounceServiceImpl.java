@@ -23,7 +23,7 @@ public class TelegramDebounceServiceImpl implements TelegramDebouncerService {
     @Override
     public Mono<Void> debounceMessages(ReceivedTelegramMessageDTO messageDTO) {
 
-        String keyId = getKeyIdUseCase.getKeyIdUseCase(messageDTO.conversationID());
+        String keyId = getKeyIdUseCase.getKeyIdUseCase(messageDTO.chatID());
 
         return searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)
                 .map(oldMessageString -> consolidateMessagesUseCase.consolidateMessagesUseCase(oldMessageString, messageDTO.message()))
@@ -36,7 +36,7 @@ public class TelegramDebounceServiceImpl implements TelegramDebouncerService {
                                         SendingTelegramMessageDTO sendingMessageDTO = new SendingTelegramMessageDTO(
                                                 messageDTO.agentID(),
                                                 messageDTO.contactName(),
-                                                messageDTO.conversationID(),
+                                                messageDTO.chatID(),
                                                 consolidatedMessage
                                         );
 
