@@ -35,6 +35,6 @@ class TelegramApiWorkflow(ProcessWorkflow.ProcessWorkflow):
         message_adapter_payload = prepare_telegram_message_adapter_payload_usecase(message_data, ai_conversation, agent_data, is_paused)
 
         # envia de maneira assincrona para o message_adapter
-        result = send_to_message_adapter_usecase(message_adapter_payload, message_data["message_type"], "telegram")
+        result = send_to_message_adapter_usecase(message_adapter_payload, message_data["message_type"])
 
         return result
