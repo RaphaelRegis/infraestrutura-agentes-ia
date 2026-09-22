@@ -1,0 +1,63 @@
+{
+  "updatedAt": "2026-09-12T23:30:55.118Z",
+  "createdAt": "2026-09-12T23:30:35.647Z",
+  "id": "3ZBc6SDkag1GFjNG",
+  "name": "TranscribeTelegramAudioUsecase",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4292c793-6186-4ecb-b3f9-04e97d9942da",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "8eefcbcf-5172-4911-9ff4-6cf063527cb1",
+  "activeVersionId": null,
+  "versionCounter": 2,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T23:30:35.649Z",
+      "createdAt": "2026-09-12T23:30:35.649Z",
+      "role": "workflow:owner",
+      "workflowId": "3ZBc6SDkag1GFjNG",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

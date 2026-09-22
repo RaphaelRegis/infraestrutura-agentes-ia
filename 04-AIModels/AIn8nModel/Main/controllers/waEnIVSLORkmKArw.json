@@ -1,0 +1,202 @@
+{
+  "updatedAt": "2026-09-22T18:30:36.355Z",
+  "createdAt": "2026-09-12T22:23:18.708Z",
+  "id": "waEnIVSLORkmKArw",
+  "name": "AIController",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "3Xj8U1VCAlPy6x2S",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/3Xj8U1VCAlPy6x2S",
+          "cachedResultName": "AIMessageReceiver"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        432,
+        -160
+      ],
+      "id": "ef003211-e483-4022-a09d-36dd6b69c05b",
+      "name": "AIMessageReceiver"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "n8n/ai_client",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -144,
+        48
+      ],
+      "id": "e4c32df1-a735-47b1-89aa-d8399b98da03",
+      "name": "AIAnswerOLD",
+      "webhookId": "f4a4f847-9117-47f9-8d52-5782515537d5",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "queue": "aimodeln8n-queue",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        16,
+        -160
+      ],
+      "id": "03ca1039-218b-4248-807b-2b934627d6f2",
+      "name": "AIAnswer",
+      "credentials": {
+        "rabbitmq": {
+          "id": "wOEweS3TUXKv4LUp",
+          "name": "RabbitMQ credential"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4c36c33-7824-418c-9456-bff5869f5252",
+              "name": "body",
+              "value": "={{ $json.content }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        -160
+      ],
+      "id": "e66adb0c-724b-4d39-a55d-cf693c54275d",
+      "name": "convertStringBodyToObject"
+    }
+  ],
+  "connections": {
+    "AIAnswerOLD": {
+      "main": [
+        []
+      ]
+    },
+    "AIAnswer": {
+      "main": [
+        [
+          {
+            "node": "convertStringBodyToObject",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "convertStringBodyToObject": {
+      "main": [
+        [
+          {
+            "node": "AIMessageReceiver",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {
+    "AIAnswerOLD": [
+      {
+        "json": {
+          "headers": {
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "user-agent": "n8n",
+            "content-length": "325",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "host": "localhost:5678",
+            "connection": "close"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+            "chatID": "81186f93-8646-4511-8f30-7fbd1890ac38",
+            "contactName": "João Silva",
+            "isPaused": false,
+            "debounceSeconds": "15",
+            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
+            "messageType": "text",
+            "messageMechanism": "uazapi",
+            "message": "Olá, gostaria de saber o horário de atendimento."
+          },
+          "webhookUrl": "http://localhost:5678/webhook-test/n8n/ai_client",
+          "executionMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "a7b75b54-3e4d-4cb2-bf8f-b8b5ef998652",
+  "activeVersionId": "a7b75b54-3e4d-4cb2-bf8f-b8b5ef998652",
+  "versionCounter": 79,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T22:23:18.710Z",
+      "createdAt": "2026-09-12T22:23:18.710Z",
+      "role": "workflow:owner",
+      "workflowId": "waEnIVSLORkmKArw",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version a7b75b54",
+    "description": ""
+  }
+}

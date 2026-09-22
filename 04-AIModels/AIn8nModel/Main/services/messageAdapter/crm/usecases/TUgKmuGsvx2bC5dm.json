@@ -1,0 +1,63 @@
+{
+  "updatedAt": "2026-09-12T23:39:21.841Z",
+  "createdAt": "2026-09-12T23:38:11.547Z",
+  "id": "TUgKmuGsvx2bC5dm",
+  "name": "TranscribeCRMImageUsecase",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b84db02c-3459-4083-80b2-536c6510978b",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "87b90fa7-44e7-4dfe-bcb7-a54b21ed2cd5",
+  "activeVersionId": null,
+  "versionCounter": 1,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T23:38:11.549Z",
+      "createdAt": "2026-09-12T23:38:11.549Z",
+      "role": "workflow:owner",
+      "workflowId": "TUgKmuGsvx2bC5dm",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

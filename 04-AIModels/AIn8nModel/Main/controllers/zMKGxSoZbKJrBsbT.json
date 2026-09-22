@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-09-17T00:39:28.913Z",
+  "createdAt": "2026-09-12T22:52:36.305Z",
+  "id": "zMKGxSoZbKJrBsbT",
   "name": "UazapiMessageAdapterController",
+  "description": null,
+  "active": true,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -61,7 +67,6 @@
       "name": "adaptMessage"
     }
   ],
-  "pinData": {},
   "connections": {
     "TranscribeUazapiContent": {
       "main": [
@@ -75,16 +80,44 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "06750fa9-60b6-4924-8c75-c5f4e3379657",
+  "staticData": null,
   "meta": {
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+    "templateCredsSetupCompleted": true
   },
   "nodeGroups": [],
-  "id": "zMKGxSoZbKJrBsbT",
-  "tags": []
+  "pinData": {},
+  "versionId": "6c0e8001-1a92-4801-9782-d6aef8b19c8a",
+  "activeVersionId": "6c0e8001-1a92-4801-9782-d6aef8b19c8a",
+  "versionCounter": 17,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T22:52:36.306Z",
+      "createdAt": "2026-09-12T22:52:36.306Z",
+      "role": "workflow:owner",
+      "workflowId": "zMKGxSoZbKJrBsbT",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version 6c0e8001",
+    "description": ""
+  }
 }

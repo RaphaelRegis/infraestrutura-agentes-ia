@@ -1,0 +1,233 @@
+{
+  "updatedAt": "2026-09-16T20:56:32.074Z",
+  "createdAt": "2026-09-12T23:38:34.562Z",
+  "id": "KQsSx3RfHMzB2cr9",
+  "name": "TranscribeUazapiImageUsecase",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -304,
+        16
+      ],
+      "id": "3a860824-3690-4d04-84cd-e72dc3795dd0",
+      "name": "input"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://message/download",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "={{ $json.requestBody.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.requestBody.fileID.split('/').pop().split('.')[0] }}"
+            },
+            {
+              "name": "return_base64",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        -80,
+        16
+      ],
+      "id": "1b5b7741-9ca7-4e04-a0ab-ec2e1a2e8ec9",
+      "name": "HTTP Request",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64Data",
+        "options": {
+          "mimeType": "image/jpg"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        144,
+        16
+      ],
+      "id": "1b98a0fa-2067-450c-be35-1cb56c28aa0d",
+      "name": "Convert to File",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "text": "Descreva a imagem",
+        "inputType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        368,
+        16
+      ],
+      "id": "ac2d26de-89ac-4126-a50d-f3a296a1336d",
+      "name": "Analyze an image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6JD8eCeAcCcthRs9",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        592,
+        16
+      ],
+      "id": "e3ff3975-1c5e-4aa3-8af9-6fb3cfe1a370",
+      "name": "Edit Fields"
+    }
+  ],
+  "connections": {
+    "input": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Analyze an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze an image": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {
+    "input": [
+      {
+        "json": {
+          "requestBody": {
+            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+            "chatID": "81186f93-8646-4511-8f30-7fbd1890ac38",
+            "contactName": "João Silva",
+            "isPaused": false,
+            "fromAtendent": false,
+            "debounceSeconds": "15",
+            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
+            "messageType": "image",
+            "messageMechanism": "uazapi",
+            "fileID": "https://api.uazapi.com/media/image/AABBCC112233IMAGE.jpg",
+            "mediaKey": "chave-de-decriptacao-image-base64==",
+            "mimetype": "image/jpeg",
+            "imageCaption": "Segue a foto do produto"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "ca88d5a9-c838-4ee2-b172-d4f4c1b7f6d5",
+  "activeVersionId": null,
+  "versionCounter": 42,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T23:38:34.563Z",
+      "createdAt": "2026-09-12T23:38:34.563Z",
+      "role": "workflow:owner",
+      "workflowId": "KQsSx3RfHMzB2cr9",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

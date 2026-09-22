@@ -1,0 +1,99 @@
+{
+  "updatedAt": "2026-09-20T20:11:01.546Z",
+  "createdAt": "2026-09-18T21:04:36.179Z",
+  "id": "hI5ZHdl7BHY6nTvQ",
+  "name": "My workflow",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "queue": "test-queue",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -112
+      ],
+      "id": "36673f7a-afc2-4097-ad7e-51d8d9f84c4c",
+      "name": "RabbitMQ Trigger",
+      "credentials": {
+        "rabbitmq": {
+          "id": "wOEweS3TUXKv4LUp",
+          "name": "RabbitMQ credential"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "queue": "debouncer-whatsapp",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        48
+      ],
+      "id": "85c4a178-2614-4f80-ae4d-9acb744a8634",
+      "name": "RabbitMQ Trigger1",
+      "credentials": {
+        "rabbitmq": {
+          "id": "wOEweS3TUXKv4LUp",
+          "name": "RabbitMQ credential"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "RabbitMQ Trigger1": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "a2931720-267b-494d-be17-517ea4f63b96",
+  "activeVersionId": null,
+  "versionCounter": 41,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-18T21:04:36.181Z",
+      "createdAt": "2026-09-18T21:04:36.181Z",
+      "role": "workflow:owner",
+      "workflowId": "hI5ZHdl7BHY6nTvQ",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

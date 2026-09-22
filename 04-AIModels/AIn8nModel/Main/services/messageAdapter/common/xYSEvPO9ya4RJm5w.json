@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-09-22T18:25:57.177Z",
+  "createdAt": "2026-09-12T23:24:29.807Z",
+  "id": "xYSEvPO9ya4RJm5w",
   "name": "HandleFinalMessageUsecase",
+  "description": null,
+  "active": true,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -66,7 +72,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        992,
+        1216,
         -16
       ],
       "id": "fdd47cb0-8999-415e-a8c2-c8ffe4109c71",
@@ -136,7 +142,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        768,
+        992,
         80
       ],
       "id": "5245394c-98a7-48da-969f-5e528c4a590b",
@@ -150,7 +156,20 @@
     },
     {
       "parameters": {
-        "url": "=http://localhost:8081/api/v1/{{ $json.requestBody.messageMechanism }}/debounceMessage",
+        "jsCode": "\n\nreturn $input.all()[0].json.requestBody;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        752,
+        256
+      ],
+      "id": "97ee05d4-7499-4e3f-a4b5-12bb03b35c97",
+      "name": "extractBody"
+    },
+    {
+      "parameters": {
+        "url": "=http://localhost:8081/api/v1/{{ $json.messageMechanism }}/debounceMessage",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -162,39 +181,40 @@
         },
         "sendBody": true,
         "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.5,
       "position": [
-        992,
-        256
+        1072,
+        -176
       ],
       "id": "017b942b-3432-4cbf-94fc-2d0ef7bfc1ba",
-      "name": "sendToDebouncer",
+      "name": "sendToDebouncerOLD",
       "disabled": true
-    }
-  ],
-  "pinData": {
-    "input": [
-      {
-        "json": {
-          "requestBody": {
-            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
-            "chatID": "81186f93-8646-4511-8f30-7fbd1890ac38",
-            "contactName": "João Silva",
-            "isPaused": false,
-            "fromAtendent": false,
-            "debounceSeconds": "15",
-            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
-            "messageType": "text",
-            "messageMechanism": "uazapi",
-            "message": "Olá, gostaria de saber o horário de atendimento."
-          }
+    },
+    {
+      "parameters": {
+        "queue": "=debouncer-{{ $json.messageMechanism }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.2,
+      "position": [
+        1216,
+        256
+      ],
+      "id": "706427c8-703c-4903-a076-f13d1f66d9d9",
+      "name": "sendToDebouncer",
+      "credentials": {
+        "rabbitmq": {
+          "id": "wOEweS3TUXKv4LUp",
+          "name": "RabbitMQ credential"
         }
       }
-    ]
-  },
+    }
+  ],
   "connections": {
     "input": {
       "main": [
@@ -236,7 +256,7 @@
         ],
         [
           {
-            "node": "sendToDebouncer",
+            "node": "extractBody",
             "type": "main",
             "index": 0
           }
@@ -258,19 +278,80 @@
       "main": [
         []
       ]
+    },
+    "extractBody": {
+      "main": [
+        [
+          {
+            "node": "sendToDebouncer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "8df0d289-d15a-42e1-8b33-df3ea40c460b",
+  "staticData": null,
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+    "templateCredsSetupCompleted": true
   },
   "nodeGroups": [],
-  "id": "xYSEvPO9ya4RJm5w",
-  "tags": []
+  "pinData": {
+    "input": [
+      {
+        "json": {
+          "requestBody": {
+            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+            "chatID": "81186f93-8646-4511-8f30-7fbd1890ac38",
+            "contactName": "João Silva",
+            "contactNumber": "5511988887777",
+            "isPaused": false,
+            "fromAtendent": false,
+            "debounceSeconds": "15",
+            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
+            "messageType": "text",
+            "messageMechanism": "uazapi",
+            "message": "Olá, poderia me falar a data de lançamento do jogo?"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "96430881-2202-4104-9a5e-e153aa47f308",
+  "activeVersionId": "96430881-2202-4104-9a5e-e153aa47f308",
+  "versionCounter": 251,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T23:24:29.809Z",
+      "createdAt": "2026-09-12T23:24:29.809Z",
+      "role": "workflow:owner",
+      "workflowId": "xYSEvPO9ya4RJm5w",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version 96430881",
+    "description": ""
+  }
 }
