@@ -1,0 +1,238 @@
+{
+  "updatedAt": "2026-09-22T18:16:48.367Z",
+  "createdAt": "2026-09-09T22:32:11.963Z",
+  "id": "SJZmeZTnZNKWhXe0",
+  "name": "PrepareQueueBody",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "originalBody",
+              "type": "object"
+            },
+            {
+              "name": "textMessage"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -288,
+        16
+      ],
+      "id": "81a11ec3-23fc-4276-856e-108a273cbacc",
+      "name": "input"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.originalBody.messageMechanism }}",
+                    "rightValue": "uazapi",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "a433e9e7-22dd-48e1-b3e3-e283f6bb0921"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "UAZAPI"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "656e23ad-086e-418b-9e86-0f7314f07516",
+                    "leftValue": "={{ $json.originalBody.messageMechanism }}",
+                    "rightValue": "telegram",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TELEGRAM"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4b59c028-bff6-46c1-b031-bbd9bfbbb97d",
+                    "leftValue": "={{ $json.originalBody.messageMechanism }}",
+                    "rightValue": "crm",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CRM"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "409da23c-e3e7-47f2-8ec4-f302db00baf1",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6e752229-a7ad-4106-8b89-2b08a3380ca2",
+              "name": "token",
+              "value": "={{ $json.originalBody.token }}",
+              "type": "string"
+            },
+            {
+              "id": "fa486208-9a6a-4bcf-890c-9c65a7f8c762",
+              "name": "number",
+              "value": "={{ $json.originalBody.contactNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "cf88c60e-a5cc-4949-94cc-aca08ae34bf6",
+              "name": "text",
+              "value": "={{ $json.textMessage }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        288,
+        -192
+      ],
+      "id": "8faf5fb1-1e03-4977-b538-73bd6adf0194",
+      "name": "prepareUazapiBody"
+    }
+  ],
+  "connections": {
+    "input": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "prepareUazapiBody",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {
+    "input": [
+      {
+        "json": {
+          "originalBody": {
+            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+            "chatID": "81186f93-8646-4511-8f30-7fbd1890ac38",
+            "contactName": "João Silva",
+            "contactNumber": "123456",
+            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
+            "messageType": "text",
+            "messageMechanism": "uazapi",
+            "message": "Olá, o que significa o nome do jogo?"
+          },
+          "textMessage": "O nome do jogo, **GTA**, é uma sigla para **Grand Theft Auto**. \n\nAqui está o que isso significa detalhadamente:\n\n1.  **O Termo Jurídico:** Nos Estados Unidos, \"Grand Theft Auto\" é o termo legal para o crime de **roubo de veículos motorizados** (como carros, motos ou caminhões). O \"Grand\" (Grande) indica que o valor do item roubado é alto, o que torna o crime um delito grave (felony).\n2.  **O Significado no Jogo:** O nome foi escolhido porque, desde o primeiro jogo lançado em 1997, a mecânica central da franquia é a liberdade de roubar qualquer veículo que você vê nas ruas para se locomover ou realizar missões.\n3.  **O Número 6 (VI):** O \"6\" (geralmente escrito em algarismos romanos como **VI**) indica que este é o sexto título principal da linha cronológica da série, sucedendo o aclamado GTA V.\n\nEm resumo, o nome define perfeitamente a essência da série: um jogo focado no mundo do crime, onde o roubo de carros é apenas o começo."
+        }
+      }
+    ]
+  },
+  "versionId": "fa57c598-b5d4-4305-8e63-ab0154c0f22c",
+  "activeVersionId": "fa57c598-b5d4-4305-8e63-ab0154c0f22c",
+  "versionCounter": 38,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-09T22:32:11.964Z",
+      "createdAt": "2026-09-09T22:32:11.964Z",
+      "role": "workflow:owner",
+      "workflowId": "SJZmeZTnZNKWhXe0",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version fa57c598",
+    "description": ""
+  }
+}

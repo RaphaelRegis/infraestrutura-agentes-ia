@@ -1,0 +1,110 @@
+{
+  "updatedAt": "2026-09-18T22:42:51.133Z",
+  "createdAt": "2026-09-09T22:42:28.173Z",
+  "id": "Rl2oZYBDTMAg99OV",
+  "name": "SendToQueue",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "queue": "test-queue",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        -16
+      ],
+      "id": "be12aad1-18c2-4cc7-bf74-218dd7dd2b31",
+      "name": "RabbitMQ",
+      "credentials": {
+        "rabbitmq": {
+          "id": "wOEweS3TUXKv4LUp",
+          "name": "RabbitMQ credential"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -304,
+        -16
+      ],
+      "id": "de5cfa85-dece-4264-8f7b-3204d97ad72c",
+      "name": "Input"
+    }
+  ],
+  "connections": {
+    "Input": {
+      "main": [
+        [
+          {
+            "node": "RabbitMQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {
+    "Input": [
+      {
+        "json": {
+          "token": "6d0d6100-eb69-4749-a717-f944198c9240",
+          "number": "12345678900",
+          "text": "Olá! Eu sou um assistente especializado em fornecer informações sobre o jogo **Grand Theft Auto VI (GTA 6)**. \n\nPosso te ajudar com detalhes sobre o trailer, os protagonistas (Lucia e Jason), o cenário de Vice City, a previsão de lançamento e outros rumores ou informações confirmadas pela Rockstar Games.\n\nComo posso te ajudar hoje?"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "579c683c-8ed4-4c22-a016-45511192251f",
+  "activeVersionId": "579c683c-8ed4-4c22-a016-45511192251f",
+  "versionCounter": 22,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-09T22:42:28.174Z",
+      "createdAt": "2026-09-09T22:42:28.174Z",
+      "role": "workflow:owner",
+      "workflowId": "Rl2oZYBDTMAg99OV",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version 579c683c",
+    "description": ""
+  }
+}

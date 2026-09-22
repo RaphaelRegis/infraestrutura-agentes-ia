@@ -1,0 +1,84 @@
+{
+  "updatedAt": "2026-09-11T18:35:09.477Z",
+  "createdAt": "2026-09-09T22:45:29.063Z",
+  "id": "r9FA3Paophl3h33f",
+  "name": "ToolModel",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "fieldExample"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -128,
+        0
+      ],
+      "id": "c3ec8099-6d88-477c-96f1-13e85c0566f4",
+      "name": "toolInput"
+    }
+  ],
+  "connections": {
+    "toolInput": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {
+    "toolInput": [
+      {
+        "json": {
+          "fieldExample": "campo de exemplo",
+          "messageID": "1234"
+        }
+      }
+    ]
+  },
+  "versionId": "edbeabbe-cffa-4ab0-87a5-bbfac1b1d810",
+  "activeVersionId": null,
+  "versionCounter": 109,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-09T22:45:29.065Z",
+      "createdAt": "2026-09-09T22:45:29.065Z",
+      "role": "workflow:owner",
+      "workflowId": "r9FA3Paophl3h33f",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

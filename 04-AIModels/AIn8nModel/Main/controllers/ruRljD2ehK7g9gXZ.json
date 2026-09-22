@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-09-20T18:29:48.423Z",
+  "createdAt": "2026-09-12T22:51:47.797Z",
+  "id": "ruRljD2ehK7g9gXZ",
   "name": "TelegramMessageAdapterController",
+  "description": null,
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -61,40 +67,6 @@
       "name": "adaptMessage"
     }
   ],
-  "pinData": {
-    "TranscribeTelegramContent": [
-      {
-        "json": {
-          "headers": {
-            "content-type": "application/json",
-            "postman-token": "3d1b0e0c-c33f-4e61-b0b6-2043070efc0b",
-            "content-length": "297",
-            "host": "localhost:5678",
-            "user-agent": "PostmanRuntime/2.5.2",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br",
-            "connection": "keep-alive"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
-            "chatID": "7d8642a0-0144-47d1-92e0-50d34e4bf1c0",
-            "contactName": "maria_silva",
-            "isPaused": false,
-            "debounceSeconds": "15",
-            "message": "Oi, gostaria de saber o status do meu pedido",
-            "messageType": "TEXT"
-          },
-          "webhookUrl": "http://localhost:5678/webhook-test/messageAdapter/telegram",
-          "executionMode": "test"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
   "connections": {
     "TranscribeTelegramContent": {
       "main": [
@@ -108,16 +80,42 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "8fa3c075-37d9-4bd1-92c0-2232d04de6a7",
-  "meta": {
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
-  },
+  "staticData": null,
+  "meta": null,
   "nodeGroups": [],
-  "id": "ruRljD2ehK7g9gXZ",
-  "tags": []
+  "pinData": {},
+  "versionId": "8fa3c075-37d9-4bd1-92c0-2232d04de6a7",
+  "activeVersionId": null,
+  "versionCounter": 19,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T22:51:47.798Z",
+      "createdAt": "2026-09-12T22:51:47.798Z",
+      "role": "workflow:owner",
+      "workflowId": "ruRljD2ehK7g9gXZ",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
 }
