@@ -4,6 +4,7 @@ public record ReceivedUazapiMessageDTO(
         String agentID,
         String chatID,
         String contactName,
+        String contactNumber,
         String token,
         String messageType,
         String messageMechanism,

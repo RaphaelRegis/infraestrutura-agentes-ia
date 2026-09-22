@@ -38,6 +38,7 @@ public class UazapiDebounceServiceImpl implements UazapiDebouncerService {
                                                 messageDTO.agentID(),
                                                 messageDTO.chatID(),
                                                 messageDTO.contactName(),
+                                                messageDTO.contactNumber(),
                                                 messageDTO.token(),
                                                 messageDTO.messageType(),
                                                 messageDTO.messageMechanism(),
