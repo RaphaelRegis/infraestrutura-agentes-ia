@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-09-12T23:46:17.596Z",
+  "createdAt": "2026-09-12T22:53:24.536Z",
+  "id": "OvcRcLQ1Iyr1zoNQ",
   "name": "CRMMessageAdapterController",
+  "description": null,
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -61,7 +67,6 @@
       "name": "adaptMessage"
     }
   ],
-  "pinData": {},
   "connections": {
     "TranscribeCRMContent": {
       "main": [
@@ -75,16 +80,42 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "3e9071df-8bb6-4722-be0b-7c1124a3bc9a",
-  "meta": {
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
-  },
+  "staticData": null,
+  "meta": null,
   "nodeGroups": [],
-  "id": "OvcRcLQ1Iyr1zoNQ",
-  "tags": []
+  "pinData": {},
+  "versionId": "3e9071df-8bb6-4722-be0b-7c1124a3bc9a",
+  "activeVersionId": null,
+  "versionCounter": 11,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T22:53:24.538Z",
+      "createdAt": "2026-09-12T22:53:24.538Z",
+      "role": "workflow:owner",
+      "workflowId": "OvcRcLQ1Iyr1zoNQ",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
 }

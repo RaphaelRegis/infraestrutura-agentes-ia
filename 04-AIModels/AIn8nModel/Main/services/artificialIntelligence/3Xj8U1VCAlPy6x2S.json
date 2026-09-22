@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-09-22T19:09:59.132Z",
+  "createdAt": "2026-09-11T21:06:24.209Z",
+  "id": "3Xj8U1VCAlPy6x2S",
   "name": "AIMessageReceiver",
+  "description": null,
+  "active": true,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -96,7 +102,8 @@
         64
       ],
       "id": "8bdbd964-a24b-4b95-a657-5a94c6cf5f26",
-      "name": "SaveToolResults"
+      "name": "SaveToolResults",
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -120,41 +127,11 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1680,
+        1600,
         64
       ],
       "id": "363b06c7-bb08-4a97-8be8-3882dde1fc71",
-      "name": "SendToQueue",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "SJZmeZTnZNKWhXe0",
-          "mode": "list",
-          "cachedResultUrl": "/workflow/SJZmeZTnZNKWhXe0",
-          "cachedResultName": "PrepareQueueBody"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3,
-      "position": [
-        1440,
-        64
-      ],
-      "id": "4e9aa703-c3ff-404a-9d4a-9f4837b7a8bd",
-      "name": "PrepareQueueBody",
-      "disabled": true
+      "name": "SendToQueue"
     },
     {
       "parameters": {
@@ -212,7 +189,7 @@
             {
               "id": "b9749439-649f-466a-9099-706d9a90b4a8",
               "name": "userMessage",
-              "value": "={{ $('Webhook').item.json.body.message }}",
+              "value": "={{ $('Input').item.json.body.message }}",
               "type": "string"
             },
             {
@@ -224,7 +201,7 @@
             {
               "id": "d7a6a8a5-677f-4cff-9fbc-8dac24a09946",
               "name": "conversationID",
-              "value": "={{ $('Webhook').item.json.body.conversationID }}",
+              "value": "={{ $('Input').item.json.body.chatID }}",
               "type": "string"
             }
           ]
@@ -243,7 +220,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT id, message\nFROM conversation_messages\nWHERE session_id = '{{ $('Webhook').item.json.body.conversationID }}'\n  AND message->>'type' = 'ai'\n  AND message->>'content' = '{{ $json.output }}'\nORDER BY id DESC\nLIMIT 1",
+        "query": "SELECT id, message\nFROM conversation_messages\nWHERE session_id = '{{ $('Input').item.json.body.chatID }}'\n  AND message->>'type' = 'ai'\n  AND message->>'content' = '{{ $json.output }}'\nORDER BY id DESC\nLIMIT 1",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -273,24 +250,60 @@
       ],
       "id": "c3338ef1-1937-4c16-a562-60c914c855da",
       "name": "Input"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "SJZmeZTnZNKWhXe0",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/SJZmeZTnZNKWhXe0",
+          "cachedResultName": "PrepareQueueBody"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "originalBody": "={{ $('Input').first().json.body }}",
+            "textMessage": "={{ $('CallAI').first().json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "originalBody",
+              "displayName": "originalBody",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            },
+            {
+              "id": "textMessage",
+              "displayName": "textMessage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1328,
+        64
+      ],
+      "id": "4e9aa703-c3ff-404a-9d4a-9f4837b7a8bd",
+      "name": "PrepareQueueBody"
     }
   ],
-  "pinData": {
-    "SendToQueue": [
-      {
-        "json": {
-          "output": "Os protagonistas de GTA 6 são **Lucia Caminos** e **Jason Duval**. Eles formam uma dupla criminosa que protagoniza a história ambientada no estado fictício de Leonida."
-        }
-      }
-    ],
-    "PrepareQueueBody": [
-      {
-        "json": {
-          "output": "Os protagonistas de GTA 6 são **Lucia Caminos** e **Jason Duval**. Eles formam uma dupla criminosa que protagoniza a história ambientada no estado fictício de Leonida."
-        }
-      }
-    ]
-  },
   "connections": {
     "GetAIData": {
       "main": [
@@ -357,18 +370,86 @@
           }
         ]
       ]
+    },
+    "SaveToolResults": {
+      "main": [
+        [
+          {
+            "node": "PrepareQueueBody",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PrepareQueueBody": {
+      "main": [
+        [
+          {
+            "node": "SendToQueue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "16fb68a7-aed6-4a66-9584-073251585275",
-  "meta": {
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
-  },
+  "staticData": null,
+  "meta": null,
   "nodeGroups": [],
-  "id": "3Xj8U1VCAlPy6x2S",
-  "tags": []
+  "pinData": {
+    "Input": [
+      {
+        "json": {
+          "body": {
+            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+            "chatID": "d1dd2a0b-9ba5-4cf0-9e47-53aa8ae4309d",
+            "contactName": "João Silva",
+            "contactNumber": "5511988887777",
+            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
+            "messageType": "text",
+            "messageMechanism": "uazapi",
+            "message": "Olá, poderia me falar a data de lançamento do jogo?"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "d94ecafc-f586-42f2-899f-28a2fd0c1655",
+  "activeVersionId": "d94ecafc-f586-42f2-899f-28a2fd0c1655",
+  "versionCounter": 100,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-11T21:06:24.211Z",
+      "createdAt": "2026-09-11T21:06:24.211Z",
+      "role": "workflow:owner",
+      "workflowId": "3Xj8U1VCAlPy6x2S",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version d94ecafc",
+    "description": ""
+  }
 }

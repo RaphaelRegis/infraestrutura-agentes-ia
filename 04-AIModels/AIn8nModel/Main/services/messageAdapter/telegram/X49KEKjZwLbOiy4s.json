@@ -1,5 +1,11 @@
 {
-  "name": "UazapiMessageAdapter",
+  "updatedAt": "2026-09-20T18:35:23.673Z",
+  "createdAt": "2026-09-12T23:04:51.588Z",
+  "id": "X49KEKjZwLbOiy4s",
+  "name": "TelegramMessageAdapter",
+  "description": null,
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -18,7 +24,7 @@
         0,
         0
       ],
-      "id": "b6b2bc2f-5ad8-40f8-906d-0c5e51020a33",
+      "id": "0f1092ba-14c9-4d6d-81d6-2fda3f05a7ba",
       "name": "Input"
     },
     {
@@ -107,7 +113,7 @@
         224,
         -16
       ],
-      "id": "ae24553c-7f39-4c90-8512-7e2064c947ff",
+      "id": "b1a4920f-f4cf-4cc3-83ab-323c3de734a6",
       "name": "RouteMessageType"
     },
     {
@@ -117,7 +123,7 @@
           "value": "xYSEvPO9ya4RJm5w",
           "mode": "list",
           "cachedResultUrl": "/workflow/xYSEvPO9ya4RJm5w",
-          "cachedResultName": "HandleFinalMessageUsecase"
+          "cachedResultName": "HandleFinalMessage"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -135,17 +141,17 @@
         1024,
         -32
       ],
-      "id": "39e75f4f-8c8b-4474-9b89-f5bd9c64b619",
+      "id": "f84ae4a4-a652-43af-9326-c3cc3834ebc8",
       "name": "HandleFinalMessage"
     },
     {
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "KQsSx3RfHMzB2cr9",
+          "value": "lv4E2FkB3Sw1SXDN",
           "mode": "list",
-          "cachedResultUrl": "/workflow/KQsSx3RfHMzB2cr9",
-          "cachedResultName": "TranscribeUazapiImageUsecase"
+          "cachedResultUrl": "/workflow/lv4E2FkB3Sw1SXDN",
+          "cachedResultName": "TranscribeTelegramImageUsecase"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -163,17 +169,17 @@
         608,
         64
       ],
-      "id": "3b3bd6d6-54f7-4288-a550-9b5fadea3ebe",
+      "id": "83db549b-cada-4aaa-b1a6-bf08a42f366f",
       "name": "TranscribeImage"
     },
     {
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "RItkbVJ0BXg5l8xQ",
+          "value": "3ZBc6SDkag1GFjNG",
           "mode": "list",
-          "cachedResultUrl": "/workflow/RItkbVJ0BXg5l8xQ",
-          "cachedResultName": "TranscribeUazapiAudioUsecase"
+          "cachedResultUrl": "/workflow/3ZBc6SDkag1GFjNG",
+          "cachedResultName": "TranscribeTelegramAudioUsecase"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -191,33 +197,10 @@
         608,
         240
       ],
-      "id": "9832ad20-f3f0-4e7e-a196-4e26cc97cad3",
+      "id": "13f472f6-85cd-45fe-b575-d354dc9dce80",
       "name": "TranscribeAudio"
     }
   ],
-  "pinData": {
-    "Input": [
-      {
-        "json": {
-          "requestBody": {
-            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
-            "chatID": "81186f93-8646-4511-8f30-7fbd1890ac38",
-            "contactName": "João Silva",
-            "isPaused": true,
-            "fromAtendent": false,
-            "debounceSeconds": "15",
-            "token": "6d0d6100-eb69-4749-a717-f944198c9240",
-            "messageType": "text",
-            "messageMechanism": "uazapi",
-            "message": "Olá, gostaria de saber o horário de atendimento."
-          }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
   "connections": {
     "Input": {
       "main": [
@@ -278,16 +261,61 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "c948d098-690a-4a14-9d3f-1ee6dc221f29",
-  "meta": {
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
-  },
+  "staticData": null,
+  "meta": null,
   "nodeGroups": [],
-  "id": "a7E5I64BMkBa7Xk3",
-  "tags": []
+  "pinData": {
+    "Input": [
+      {
+        "json": {
+          "requestBody": {
+            "agentID": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+            "chatID": "7d8642a0-0144-47d1-92e0-50d34e4bf1c0",
+            "contactName": "maria_silva",
+            "isPaused": false,
+            "debounceSeconds": "15",
+            "message": "Oi, gostaria de saber o status do meu pedido",
+            "messageType": "TEXT"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "b66bb04e-4867-4ce8-bf71-64e881f52bb3",
+  "activeVersionId": null,
+  "versionCounter": 47,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-12T23:04:51.590Z",
+      "createdAt": "2026-09-12T23:04:51.590Z",
+      "role": "workflow:owner",
+      "workflowId": "X49KEKjZwLbOiy4s",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
 }

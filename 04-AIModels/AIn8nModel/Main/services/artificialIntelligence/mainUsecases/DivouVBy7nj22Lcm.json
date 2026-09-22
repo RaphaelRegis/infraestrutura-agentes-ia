@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-09-22T19:27:31.094Z",
+  "createdAt": "2026-09-09T22:37:44.251Z",
+  "id": "DivouVBy7nj22Lcm",
   "name": "SaveToolResults",
+  "description": null,
+  "active": true,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -84,49 +90,18 @@
     },
     {
       "parameters": {
-        "options": {}
+        "jsCode": "\nreturn {};"
       },
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        928,
-        192
+        816,
+        0
       ],
-      "id": "07ad9883-a752-4e6d-a0fc-f639d80b7fee",
-      "name": "Split Out"
+      "id": "6a5f1645-9aef-498c-9144-ac86f4ad156c",
+      "name": "returnEmptyObject"
     }
   ],
-  "pinData": {
-    "Input": [
-      {
-        "json": {
-          "usedTools": [
-            {
-              "toolName": "Supabase_Vector_Store",
-              "input": {
-                "input": "Quem são os protagonistas de GTA 6?"
-              },
-              "output": [
-                {
-                  "response": [
-                    {
-                      "type": "text",
-                      "text": "{\"pageContent\":\"Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami.\",\"metadata\":{\"loc\":{\"lines\":{\"to\":1,\"from\":1}},\"source\":\"blob\",\"blobType\":\"application/json\"}}"
-                    }
-                  ]
-                }
-              ],
-              "logic": "Calling Supabase Vector Store"
-            }
-          ],
-          "messageID": 8
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
   "connections": {
     "Input": {
       "main": [
@@ -149,19 +124,66 @@
           }
         ]
       ]
+    },
+    "SaveAllTools": {
+      "main": [
+        [
+          {
+            "node": "returnEmptyObject",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "ef9825a0-9fb5-4f7c-b69c-70a8a41b2cd5",
+  "staticData": null,
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+    "templateCredsSetupCompleted": true
   },
   "nodeGroups": [],
-  "id": "DivouVBy7nj22Lcm",
-  "tags": []
+  "pinData": {
+    "Input": [
+      {
+        "json": {
+          "usedTools": [],
+          "messageID": 39
+        }
+      }
+    ]
+  },
+  "versionId": "454cf95a-89e1-4750-a17c-7787c232d78a",
+  "activeVersionId": "454cf95a-89e1-4750-a17c-7787c232d78a",
+  "versionCounter": 165,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-09T22:37:44.253Z",
+      "createdAt": "2026-09-09T22:37:44.253Z",
+      "role": "workflow:owner",
+      "workflowId": "DivouVBy7nj22Lcm",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version 454cf95a",
+    "description": ""
+  }
 }

@@ -1,5 +1,11 @@
 {
+  "updatedAt": "2026-09-10T22:04:30.556Z",
+  "createdAt": "2026-09-10T18:35:12.866Z",
+  "id": "r1OZajVBsCKfSML6",
   "name": "generate_embeddings",
+  "description": null,
+  "active": true,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -122,42 +128,6 @@
       "name": "select_rag"
     }
   ],
-  "pinData": {
-    "When clicking ‘Execute workflow’": [
-      {
-        "json": {},
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ],
-    "Get a row": [
-      {
-        "json": {
-          "id": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
-          "created_at": "2026-09-10T19:30:02.369022+00:00",
-          "agent_name": "AgenteExemploGTA6",
-          "message_app": "Telegram",
-          "ai_prompt": "Você é um agente capaz de dizer informações sobre o jogo GTA 6.",
-          "ai_rag": "Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami.",
-          "notification_group_number": "1234567890"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ],
-    "select_rag": [
-      {
-        "json": {
-          "ai_rag": "Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami."
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
   "connections": {
     "Default Data Loader": {
       "ai_document": [
@@ -215,17 +185,79 @@
       ]
     }
   },
-  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "ab481e06-46cd-4e6a-b11e-38087e7ab1cf",
+  "staticData": null,
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "17764db219a03815448a8dfa2fbff9fe664e58d503e30769baedf3653738b250"
+    "templateCredsSetupCompleted": true
   },
   "nodeGroups": [],
-  "id": "r1OZajVBsCKfSML6",
-  "tags": []
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Get a row": [
+      {
+        "json": {
+          "id": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712",
+          "created_at": "2026-09-10T19:30:02.369022+00:00",
+          "agent_name": "AgenteExemploGTA6",
+          "message_app": "Telegram",
+          "ai_prompt": "Você é um agente capaz de dizer informações sobre o jogo GTA 6.",
+          "ai_rag": "Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami.",
+          "notification_group_number": "1234567890"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "select_rag": [
+      {
+        "json": {
+          "ai_rag": "Grand Theft Auto VI é um futuro jogo eletrônico de ação-aventura desenvolvido e publicado pela Rockstar Games. Será o oitavo título principal da franquia Grand Theft Auto, sendo o sucessor de Grand Theft Auto V (2013) e o décimo sexto jogo eletrônico da série. Ambientado no estado fictício de Leonida, baseado na Flórida, o jogo seguirá a história da dupla criminosa Lucia Caminos e Jason Duval. Os jogadores poderão explorar livremente o mundo aberto de Leonida, que inclui a cidade de Vice City, inspirada em Miami."
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "ab481e06-46cd-4e6a-b11e-38087e7ab1cf",
+  "activeVersionId": "c737e9c2-a225-4dff-81ae-945d367b6506",
+  "versionCounter": 57,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-10T18:35:12.869Z",
+      "createdAt": "2026-09-10T18:35:12.869Z",
+      "role": "workflow:owner",
+      "workflowId": "r1OZajVBsCKfSML6",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
 }

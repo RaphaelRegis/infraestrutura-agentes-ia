@@ -1,0 +1,172 @@
+{
+  "updatedAt": "2026-09-11T21:30:48.860Z",
+  "createdAt": "2026-09-09T22:30:40.345Z",
+  "id": "eULwptpNwCfG6LQu",
+  "name": "GetAIData",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "agent_id"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "fadf0506-f78c-4ba9-adbb-fb7acba34e4f",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "ai_agents",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $json.agent_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9d3952a2-c69a-42e6-a076-2dbbd2714531",
+      "name": "GetAgentInfo",
+      "credentials": {
+        "supabaseApi": {
+          "id": "uPdNZNGXsRiy3svg",
+          "name": "AI Agents Database Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f4d459e-39ce-4122-a454-b209a5424462",
+              "name": "message_app",
+              "value": "={{ $json.message_app }}",
+              "type": "string"
+            },
+            {
+              "id": "86b9ce46-e863-4722-9ab8-0e118e7d241c",
+              "name": "ai_prompt",
+              "value": "={{ $json.ai_prompt }}",
+              "type": "string"
+            },
+            {
+              "id": "f8e92aff-6d7e-45cb-bebb-c700077d793b",
+              "name": "notification_group_number",
+              "value": "={{ $json.notification_group_number }}",
+              "type": "string"
+            },
+            {
+              "id": "7a37e54f-83f5-43c6-8d09-ff7b1ace421c",
+              "name": "agent_workflow_id",
+              "value": "={{ $json.agent_workflow_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "0208fe3f-15d4-4ae4-b91e-46e254d894fa",
+      "name": "ReturnNecessaryFields"
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "GetAgentInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetAgentInfo": {
+      "main": [
+        [
+          {
+            "node": "ReturnNecessaryFields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "agent_id": "4bca0d6d-ec70-4cd7-95f1-66ca1b6e5712"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "4b1e91d0-6068-42e2-8f1a-57b1b7c7bc14",
+  "activeVersionId": "4b1e91d0-6068-42e2-8f1a-57b1b7c7bc14",
+  "versionCounter": 28,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-09-09T22:30:40.347Z",
+      "createdAt": "2026-09-09T22:30:40.347Z",
+      "role": "workflow:owner",
+      "workflowId": "eULwptpNwCfG6LQu",
+      "projectId": "1D93jfc3sONMfNPU",
+      "project": {
+        "updatedAt": "2026-09-09T22:06:37.974Z",
+        "createdAt": "2026-09-09T22:05:41.751Z",
+        "id": "1D93jfc3sONMfNPU",
+        "name": "Raphael Araujo <regis.raphael17@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "d8b675fb-5e74-429c-a3a3-4a99897a5359"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Version 4b1e91d0",
+    "description": ""
+  }
+}
