@@ -1,8 +1,8 @@
-package com.agents.debouncer.services.telegramDebouncer;
+package com.agents.debouncer.services.uazapiDebouncer;
 
-import com.agents.debouncer.dto.telegram.ReceivedTelegramMessageDTO;
-import com.agents.debouncer.dto.telegram.SendingTelegramMessageDTO;
-import com.agents.debouncer.services.telegramDebouncer.useCases.*;
+import com.agents.debouncer.dto.uazapi.ReceivedUazapiMessageDTO;
+import com.agents.debouncer.dto.uazapi.SendingUazapiMessageDTO;
+import com.agents.debouncer.services.uazapiDebouncer.useCases.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -11,32 +11,37 @@ import java.time.Duration;
 
 @Service
 @AllArgsConstructor
-public class TelegramDebounceServiceImpl implements TelegramDebouncerService {
+public class UazapiDebounceServiceImpl implements UazapiDebouncerService {
 
-    private final GetTelegramKeyIdUseCase getKeyIdUseCase;
-    private final SearchRedisTelegramMessageUseCase searchRedisMessageUseCase;
-    private final ConsolidateTelegramMessagesUseCase consolidateMessagesUseCase;
-    private final SaveRedisTelegramMessageUseCase saveRedisMessageUseCase;
-    private final DeleteRedisTelegramMessageUseCase deleteRedisMessageUseCase;
-    private final SendTelegramMessageToAIUseCase sendMessageToAIUseCase;
+    private final GetUazapiKeyIdUseCase getKeyIdUseCase;
+    private final SearchRedisUazapiMessageUseCase searchRedisMessageUseCase;
+    private final ConsolidateUazapiMessagesUseCase consolidateMessagesUseCase;
+    private final SaveRedisUazapiMessageUseCase saveRedisMessageUseCase;
+    private final DeleteRedisUazapiMessageUseCase deleteRedisMessageUseCase;
+    private final SendUazapiMessageToAIUseCase sendMessageToAIUseCase;
 
     @Override
-    public Mono<Void> debounceMessages(ReceivedTelegramMessageDTO messageDTO) {
+    public Mono<Void> debounceMessages(ReceivedUazapiMessageDTO messageDTO) {
 
         String keyId = getKeyIdUseCase.getKeyIdUseCase(messageDTO.chatID());
+        long debounceSeconds = Long.parseLong(messageDTO.debounceSeconds());
 
         return searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)
                 .map(oldMessageString -> consolidateMessagesUseCase.consolidateMessagesUseCase(oldMessageString, messageDTO.message()))
                 .flatMap(consolidatedMessage ->
                         saveRedisMessageUseCase.saveRedisMessageUseCase(keyId, consolidatedMessage)
-                                .then(Mono.delay(Duration.ofSeconds(messageDTO.debounceSeconds())))
+                                .then(Mono.delay(Duration.ofSeconds(debounceSeconds)))
                                 .then(Mono.defer(() -> searchRedisMessageUseCase.searchRedisMessageUseCase(keyId)))
                                 .flatMap(fullMessage -> {
                                     if (fullMessage.equals(consolidatedMessage)) {
-                                        SendingTelegramMessageDTO sendingMessageDTO = new SendingTelegramMessageDTO(
+                                        SendingUazapiMessageDTO sendingMessageDTO = new SendingUazapiMessageDTO(
                                                 messageDTO.agentID(),
-                                                messageDTO.contactName(),
                                                 messageDTO.chatID(),
+                                                messageDTO.contactName(),
+                                                messageDTO.contactNumber(),
+                                                messageDTO.token(),
+                                                messageDTO.messageType(),
+                                                messageDTO.messageMechanism(),
                                                 consolidatedMessage
                                         );
 
@@ -49,11 +54,5 @@ public class TelegramDebounceServiceImpl implements TelegramDebouncerService {
                                 })
                 )
                 .then();
-
     }
-
-
-
-
-
 }

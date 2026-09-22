@@ -4,6 +4,7 @@ def prepare_uazapi_message_adapter_payload_usecase(message_data: dict, ai_conver
         "agentID": agent_data["agent_uuid"],
         "chatID": ai_conversation["id"],
         "contactName": message_data["contact_name"],
+        "contactNumber": message_data["contact_number"],
         "isPaused": is_paused,
         "fromAtendent": message_data["from_atendent"],
         "debounceSeconds": agent_data["debounce_seconds"],
